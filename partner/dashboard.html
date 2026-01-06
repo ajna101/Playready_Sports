@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Partner Dashboard - Plaready</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .smooth-transition {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .slide-in {
+      animation: slideInUp 0.5s ease-out forwards;
+    }
+    
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hover-lift {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -5px rgba(0, 0, 0, 0.15);
+    }
+    
+    .kpi-card {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .kpi-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50/30 min-h-screen">
+  
+  <!-- Navigation Bar -->
+  <nav class="glass-card sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row justify-between items-center py-3 gap-4">
+        <!-- Brand -->
+        <a href="../index.html" class="flex items-center space-x-3 smooth-transition hover:opacity-80">
+          <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
+            <i class="fas fa-toolbox text-white text-xl"></i>
+          </div>
+          <span class="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            Plaready Prototype
+          </span>
+        </a>
+        
+        <!-- Navigation Links -->
+        <div class="flex flex-wrap items-center gap-2">
+          <a href="dashboard.html" class="px-4 py-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white font-medium rounded-lg shadow-md smooth-transition hover:shadow-lg">
+            <i class="fas fa-home mr-2"></i>Dashboard
+          </a>
+          <a href="orders.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-list-ul mr-2"></i>Orders
+          </a>
+          <a href="payouts.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-wallet mr-2"></i>Payouts
+          </a>
+          <a href="onboarding.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-user-check mr-2"></i>Onboarding
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+    <!-- Header Section -->
+    <div class="glass-card rounded-2xl shadow-xl p-8 mb-6 slide-in">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h1 class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
+            Partner Dashboard
+          </h1>
+          <p class="text-gray-600 text-lg">
+            Accept/reject jobs, update status, and monitor quality and earnings.
+          </p>
+        </div>
+        <div class="hidden md:flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl shadow-lg">
+          <i class="fas fa-chart-line text-white text-2xl"></i>
+        </div>
+      </div>
+      
+      <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent my-6"></div>
+      
+      <!-- KPI Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- New Orders KPI -->
+        <div class="glass-card kpi-card rounded-xl p-6 hover-lift smooth-transition">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <div class="text-sm font-medium text-gray-500 uppercase tracking-wide mb-2">New orders</div>
+              <div class="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">5</div>
+            </div>
+            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-md">
+              <i class="fas fa-inbox text-white text-xl"></i>
+            </div>
+          </div>
+          <div class="text-xs text-gray-500 flex items-center">
+            <i class="fas fa-clock mr-2"></i>Last 24 hours
+          </div>
+        </div>
+
+        <!-- Average Rating KPI -->
+        <div class="glass-card kpi-card rounded-xl p-6 hover-lift smooth-transition">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <div class="text-sm font-medium text-gray-500 uppercase tracking-wide mb-2">Avg rating</div>
+              <div class="text-4xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent flex items-center">
+                4.7
+                <i class="fas fa-star text-amber-400 text-xl ml-2"></i>
+              </div>
+            </div>
+            <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-500 rounded-lg flex items-center justify-center shadow-md">
+              <i class="fas fa-award text-white text-xl"></i>
+            </div>
+          </div>
+          <div class="text-xs text-gray-500 flex items-center">
+            <i class="fas fa-calendar mr-2"></i>Last 30 days
+          </div>
+        </div>
+
+        <!-- Earnings KPI -->
+        <div class="glass-card kpi-card rounded-xl p-6 hover-lift smooth-transition">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <div class="text-sm font-medium text-gray-500 uppercase tracking-wide mb-2">Earnings (MTD)</div>
+              <div class="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">₹42,300</div>
+            </div>
+            <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg flex items-center justify-center shadow-md">
+              <i class="fas fa-rupee-sign text-white text-xl"></i>
+            </div>
+          </div>
+          <div class="text-xs text-gray-500 flex items-center">
+            <i class="fas fa-check-circle mr-2"></i>After commission
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Required Section -->
+    <div class="glass-card rounded-2xl shadow-xl p-8 slide-in hover-lift">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-bold text-gray-800 flex items-center">
+          <i class="fas fa-bell text-orange-500 mr-3"></i>
+          Action Required
+        </h2>
+        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-sm font-semibold rounded-full">
+          1 pending
+        </span>
+      </div>
+      
+      <!-- Order Action Item -->
+      <div class="bg-gradient-to-r from-orange-50 to-amber-50 border-2 border-orange-200 rounded-xl p-6 smooth-transition hover:border-orange-300 hover:shadow-lg">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+          <!-- Order Details -->
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-3 py-1 bg-purple-600 text-white text-sm font-bold rounded-lg">
+                ORD-24102
+              </span>
+              <span class="text-lg font-semibold text-gray-800">
+                Racquet Stringing (Badminton)
+              </span>
+            </div>
+            <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+              <div class="flex items-center">
+                <i class="fas fa-calendar-alt text-purple-500 mr-2"></i>
+                <span><strong>Pickup:</strong> 2025-12-15 09:00-11:00</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-bolt text-amber-500 mr-2"></i>
+                <span class="px-2 py-1 bg-amber-100 text-amber-700 font-semibold rounded">Express</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-tachometer-alt text-blue-500 mr-2"></i>
+                <span><strong>Tension:</strong> 24 lbs</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Action Buttons -->
+          <div class="flex gap-3 w-full lg:w-auto">
+            <a href="order_detail.html?o=ORD-24102&act=reject" class="flex-1 lg:flex-none inline-flex items-center justify-center px-6 py-3 bg-white text-red-600 font-medium rounded-lg border-2 border-red-300 shadow-md hover:shadow-lg smooth-transition hover:bg-red-50">
+              <i class="fas fa-times mr-2"></i>
+              Reject
+            </a>
+            <a href="order_detail.html?o=ORD-24102&act=accept" class="flex-1 lg:flex-none inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-medium rounded-lg shadow-lg hover:shadow-xl smooth-transition hover:from-green-600 hover:to-emerald-600">
+              <i class="fas fa-check mr-2"></i>
+              Accept
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Note -->
+    <div class="text-center mt-8 px-4 py-3 glass-card rounded-lg text-gray-500 text-sm">
+      <i class="fas fa-info-circle mr-2"></i>
+      Synthetic data only. Prototype for UI/UX validation.
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

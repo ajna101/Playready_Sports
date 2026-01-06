@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Profile - Plaready</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .smooth-transition {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .slide-in {
+      animation: slideInUp 0.5s ease-out forwards;
+    }
+    
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hover-lift {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -5px rgba(0, 0, 0, 0.15);
+    }
+    
+    .phone-frame {
+      max-width: 480px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+    
+    .address-card {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .address-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50/30 min-h-screen">
+  
+  <!-- Desktop Navigation Bar (Hidden on mobile) -->
+  <nav class="glass-card sticky top-0 z-50 shadow-lg hidden md:block">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-3">
+        <!-- Brand -->
+        <a href="../index.html" class="flex items-center space-x-3 smooth-transition hover:opacity-80">
+          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-lg">
+            <i class="fas fa-racquet text-white text-xl"></i>
+          </div>
+          <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Plaready Prototype
+          </span>
+        </a>
+        
+        <!-- Navigation Links -->
+        <div class="flex items-center gap-2">
+          <a href="home.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-home mr-2"></i>Home
+          </a>
+          <a href="orders.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-box mr-2"></i>Orders
+          </a>
+          <a href="profile.html" class="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium rounded-lg shadow-md smooth-transition hover:shadow-lg">
+            <i class="fas fa-user mr-2"></i>Profile
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container mx-auto px-4 py-8">
+    
+    <!-- Phone Frame -->
+    <div class="phone-frame">
+      <!-- Phone Content -->
+      <div class="p-6 pb-24 min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
+        
+        <!-- Header -->
+        <div class="mb-6 slide-in">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+              <i class="fas fa-user-circle text-white text-xl"></i>
+            </div>
+            <div>
+              <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                My Profile
+              </h1>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 ml-15">
+            <i class="fas fa-cog text-blue-500 mr-1"></i>
+            Manage your account and preferences
+          </p>
+        </div>
+        
+        <!-- User Info Card -->
+        <div class="glass-card rounded-xl p-6 mb-6 border border-blue-100 hover-lift smooth-transition bg-gradient-to-br from-blue-50 to-indigo-50">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-lg">
+              <i class="fas fa-user text-white text-2xl"></i>
+            </div>
+            <div class="flex-1">
+              <div class="text-xl font-bold text-gray-800 mb-1" id="name">User</div>
+              <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full inline-flex items-center">
+                <i class="fas fa-check-circle mr-1"></i>Verified
+              </span>
+            </div>
+          </div>
+          
+          <div class="space-y-3 pt-4 border-t-2 border-blue-200">
+            <div class="flex items-center gap-3 text-gray-700">
+              <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                <i class="fas fa-phone text-blue-600"></i>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500">Mobile</div>
+                <div class="font-semibold" id="phone">Loading...</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 text-gray-700">
+              <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                <i class="fas fa-envelope text-purple-600"></i>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500">Email</div>
+                <div class="font-semibold" id="email">Loading...</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-4 border-t-2 border-blue-200">
+            <button class="w-full inline-flex items-center justify-center px-4 py-2 bg-white text-blue-600 font-semibold rounded-lg border-2 border-blue-300 shadow-md hover:shadow-lg smooth-transition hover:bg-blue-50">
+              <i class="fas fa-edit mr-2"></i>Edit Profile
+            </button>
+          </div>
+        </div>
+        
+        <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-6"></div>
+        
+        <!-- Saved Addresses Section -->
+        <div class="mb-6">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-bold text-gray-800 flex items-center">
+              <i class="fas fa-map-marker-alt text-purple-500 mr-2"></i>
+              Saved Addresses
+            </h2>
+            <button class="inline-flex items-center px-3 py-1.5 bg-purple-500 text-white text-sm font-semibold rounded-lg shadow-md hover:shadow-lg smooth-transition hover:bg-purple-600">
+              <i class="fas fa-plus mr-1"></i>Add
+            </button>
+          </div>
+          
+          <div class="space-y-3" id="addrs">
+            <!-- Addresses will be populated here -->
+          </div>
+        </div>
+        
+        <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-6"></div>
+        
+        <!-- Settings & Actions -->
+        <div class="space-y-3 mb-6">
+          <h3 class="text-lg font-bold text-gray-800 mb-3">Settings & Actions</h3>
+          
+          <!-- Notification Settings -->
+          <a href="notifications.html" class="glass-card rounded-xl p-4 hover-lift smooth-transition border border-green-100 flex items-center justify-between group">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg flex items-center justify-center shadow-md">
+                <i class="fas fa-bell text-white"></i>
+              </div>
+              <div>
+                <div class="font-bold text-gray-800">Notification Settings</div>
+                <div class="text-xs text-gray-600">Manage alerts and updates</div>
+              </div>
+            </div>
+            <i class="fas fa-chevron-right text-gray-400 group-hover:text-blue-600 smooth-transition"></i>
+          </a>
+
+          <!-- Order History -->
+          <a href="orders.html" class="glass-card rounded-xl p-4 hover-lift smooth-transition border border-blue-100 flex items-center justify-between group">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center shadow-md">
+                <i class="fas fa-history text-white"></i>
+              </div>
+              <div>
+                <div class="font-bold text-gray-800">Order History</div>
+                <div class="text-xs text-gray-600">View past bookings</div>
+              </div>
+            </div>
+            <i class="fas fa-chevron-right text-gray-400 group-hover:text-blue-600 smooth-transition"></i>
+          </a>
+
+          <!-- Help & Support -->
+          <a href="#" class="glass-card rounded-xl p-4 hover-lift smooth-transition border border-orange-100 flex items-center justify-between group">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-amber-500 rounded-lg flex items-center justify-center shadow-md">
+                <i class="fas fa-question-circle text-white"></i>
+              </div>
+              <div>
+                <div class="font-bold text-gray-800">Help & Support</div>
+                <div class="text-xs text-gray-600">Get assistance</div>
+              </div>
+            </div>
+            <i class="fas fa-chevron-right text-gray-400 group-hover:text-blue-600 smooth-transition"></i>
+          </a>
+
+          <!-- Log Out -->
+          <a href="login.html" class="glass-card rounded-xl p-4 hover-lift smooth-transition border border-red-100 flex items-center justify-between group bg-gradient-to-r from-red-50 to-rose-50">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-gradient-to-br from-red-500 to-rose-500 rounded-lg flex items-center justify-center shadow-md">
+                <i class="fas fa-sign-out-alt text-white"></i>
+              </div>
+              <div>
+                <div class="font-bold text-gray-800">Log Out</div>
+                <div class="text-xs text-gray-600">Sign out of your account</div>
+              </div>
+            </div>
+            <i class="fas fa-chevron-right text-gray-400 group-hover:text-red-600 smooth-transition"></i>
+          </a>
+        </div>
+
+        <!-- App Info -->
+        <div class="text-center text-xs text-gray-500 mt-6">
+          <div class="mb-2">Plaready v1.0.0 (MVP)</div>
+          <div class="flex items-center justify-center gap-4">
+            <a href="#" class="hover:text-blue-600 smooth-transition">Terms</a>
+            <span class="text-gray-300">•</span>
+            <a href="#" class="hover:text-blue-600 smooth-transition">Privacy</a>
+            <span class="text-gray-300">•</span>
+            <a href="#" class="hover:text-blue-600 smooth-transition">About</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bottom Navigation -->
+      <div class="fixed bottom-0 left-0 right-0 max-w-[480px] mx-auto glass-card border-t-2 border-gray-200 py-3 px-6">
+        <div class="flex justify-around items-center">
+          <a href="home.html" class="flex flex-col items-center gap-1 text-gray-400 hover:text-blue-600 smooth-transition">
+            <i class="fas fa-home text-xl"></i>
+            <span class="text-xs font-medium">Home</span>
+          </a>
+          <a href="orders.html" class="flex flex-col items-center gap-1 text-gray-400 hover:text-blue-600 smooth-transition">
+            <i class="fas fa-box text-xl"></i>
+            <span class="text-xs font-medium">Orders</span>
+          </a>
+          <a href="profile.html" class="flex flex-col items-center gap-1 text-blue-600 smooth-transition">
+            <i class="fas fa-user text-xl"></i>
+            <span class="text-xs font-semibold">Profile</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Note -->
+    <div class="text-center mt-8 px-4 py-3 glass-card rounded-lg text-gray-500 text-sm max-w-[480px] mx-auto">
+      <i class="fas fa-info-circle mr-2"></i>
+      Synthetic data only. Prototype for UI/UX validation.
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    (async ()=>{
+      const data = await loadData();
+      document.getElementById('name').textContent = data.user.name;
+      document.getElementById('phone').textContent = data.user.phone;
+      document.getElementById('email').textContent = data.user.email;
+      
+      const wrap = document.getElementById('addrs');
+      data.user.addresses.forEach((a, index) => {
+        const delay = index * 0.1;
+        wrap.insertAdjacentHTML('beforeend', `
+          <div class="glass-card address-card rounded-xl p-4 hover-lift smooth-transition border border-purple-100 slide-in" style="animation-delay: ${delay}s">
+            <div class="flex items-start justify-between gap-3 pl-3">
+              <div class="flex-1">
+                <div class="flex items-center gap-2 mb-2">
+                  <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center shadow-md">
+                    <i class="fas fa-home text-white text-sm"></i>
+                  </div>
+                  <div class="font-bold text-gray-800">${a.label}</div>
+                </div>
+                <div class="text-sm text-gray-700 pl-10">
+                  ${a.line1}${a.line2 ? ', ' + a.line2 : ''}, ${a.city} ${a.pincode}
+                </div>
+              </div>
+              <button class="inline-flex items-center px-3 py-2 bg-white text-purple-600 font-semibold rounded-lg border-2 border-purple-300 shadow-sm hover:shadow-md smooth-transition hover:bg-purple-50">
+                <i class="fas fa-edit"></i>
+              </button>
+            </div>
+          </div>
+        `);
+      });
+    })();
+  </script>
+</body>
+</html>

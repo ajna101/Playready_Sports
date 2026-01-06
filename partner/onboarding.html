@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Partner Onboarding - Plaready</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .smooth-transition {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .slide-in {
+      animation: slideInUp 0.5s ease-out forwards;
+    }
+    
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hover-lift {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -5px rgba(0, 0, 0, 0.15);
+    }
+    
+    .input-focus {
+      transition: all 0.3s ease;
+    }
+    
+    .input-focus:focus {
+      outline: none;
+      border-color: #8b5cf6;
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50/30 min-h-screen">
+  
+  <!-- Navigation Bar -->
+  <nav class="glass-card sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row justify-between items-center py-3 gap-4">
+        <!-- Brand -->
+        <a href="../index.html" class="flex items-center space-x-3 smooth-transition hover:opacity-80">
+          <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
+            <i class="fas fa-toolbox text-white text-xl"></i>
+          </div>
+          <span class="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            Plaready Prototype
+          </span>
+        </a>
+        
+        <!-- Navigation Links -->
+        <div class="flex flex-wrap items-center gap-2">
+          <a href="dashboard.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-home mr-2"></i>Dashboard
+          </a>
+          <a href="orders.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-list-ul mr-2"></i>Orders
+          </a>
+          <a href="payouts.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-wallet mr-2"></i>Payouts
+          </a>
+          <a href="onboarding.html" class="px-4 py-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white font-medium rounded-lg shadow-md smooth-transition hover:shadow-lg">
+            <i class="fas fa-user-check mr-2"></i>Onboarding
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+    <!-- Header Section -->
+    <div class="glass-card rounded-2xl shadow-xl p-8 mb-6 slide-in">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h1 class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
+            Partner Onboarding
+          </h1>
+          <p class="text-gray-600 text-lg">
+            Registration, KYC upload, capabilities, pricing acceptance, SLA agreement.
+          </p>
+        </div>
+        <div class="hidden md:flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl shadow-lg">
+          <i class="fas fa-user-plus text-white text-2xl"></i>
+        </div>
+      </div>
+      
+      <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent my-6"></div>
+      
+      <!-- Two Column Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        
+        <!-- Company Information Card -->
+        <div class="glass-card rounded-xl p-6 hover-lift smooth-transition border border-purple-100">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+            <i class="fas fa-building text-purple-500 mr-3"></i>
+            Company Information
+          </h2>
+          
+          <div class="space-y-5">
+            <!-- Shop Name -->
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-2">
+                <i class="fas fa-store mr-2 text-purple-500"></i>Shop name
+              </label>
+              <input 
+                type="text" 
+                value="ShuttlePro Stringing" 
+                class="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-lg input-focus smooth-transition text-gray-800 font-medium"
+                placeholder="Enter shop name"
+              />
+            </div>
+            
+            <!-- Service Area -->
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-2">
+                <i class="fas fa-map-marker-alt mr-2 text-purple-500"></i>Service area
+              </label>
+              <select class="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-lg input-focus smooth-transition text-gray-800 font-medium appearance-none cursor-pointer">
+                <option>South Delhi</option>
+                <option>Central Delhi</option>
+                <option>Dwarka</option>
+              </select>
+            </div>
+            
+            <!-- Capabilities -->
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-2">
+                <i class="fas fa-cogs mr-2 text-purple-500"></i>Capabilities
+                <span class="text-xs text-gray-500 ml-2">(Hold Ctrl/Cmd to select multiple)</span>
+              </label>
+              <select 
+                multiple 
+                class="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-lg input-focus smooth-transition text-gray-800 font-medium cursor-pointer"
+                style="height: 160px"
+              >
+                <option value="stringing" selected class="py-2">✓ Racquet stringing</option>
+                <option value="grip" selected class="py-2">✓ Grip replacement</option>
+                <option value="grommet" class="py-2">Grommet repair</option>
+                <option value="frame" class="py-2">Frame repair</option>
+              </select>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full">
+                  <i class="fas fa-check mr-1"></i>Racquet stringing
+                </span>
+                <span class="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full">
+                  <i class="fas fa-check mr-1"></i>Grip replacement
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KYC & Compliance Card -->
+        <div class="glass-card rounded-xl p-6 hover-lift smooth-transition border border-indigo-100">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+            <i class="fas fa-shield-alt text-indigo-500 mr-3"></i>
+            KYC & Compliance
+          </h2>
+          
+          <!-- KYC Document List -->
+          <div class="space-y-3 mb-6">
+            <!-- GST / Shop License -->
+            <div class="bg-gradient-to-r from-yellow-50 to-amber-50 border-2 border-yellow-200 rounded-lg p-4 smooth-transition hover:border-yellow-300">
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex-1">
+                  <div class="font-semibold text-gray-800 mb-1 flex items-center">
+                    <i class="fas fa-file-invoice text-yellow-600 mr-2"></i>
+                    GST / Shop license
+                  </div>
+                  <div class="text-sm text-gray-600">Upload PDF/JPG</div>
+                </div>
+                <div class="flex flex-col items-end gap-2">
+                  <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full whitespace-nowrap">
+                    <i class="fas fa-clock mr-1"></i>Pending
+                  </span>
+                  <button class="text-purple-600 hover:text-purple-700 text-sm font-semibold smooth-transition">
+                    <i class="fas fa-upload mr-1"></i>Upload
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Owner ID -->
+            <div class="bg-gradient-to-r from-yellow-50 to-amber-50 border-2 border-yellow-200 rounded-lg p-4 smooth-transition hover:border-yellow-300">
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex-1">
+                  <div class="font-semibold text-gray-800 mb-1 flex items-center">
+                    <i class="fas fa-id-card text-yellow-600 mr-2"></i>
+                    Owner ID (Aadhaar/PAN)
+                  </div>
+                  <div class="text-sm text-gray-600">Upload PDF/JPG</div>
+                </div>
+                <div class="flex flex-col items-end gap-2">
+                  <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full whitespace-nowrap">
+                    <i class="fas fa-clock mr-1"></i>Pending
+                  </span>
+                  <button class="text-purple-600 hover:text-purple-700 text-sm font-semibold smooth-transition">
+                    <i class="fas fa-upload mr-1"></i>Upload
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bank Details -->
+            <div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-lg p-4 smooth-transition hover:border-green-300">
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex-1">
+                  <div class="font-semibold text-gray-800 mb-1 flex items-center">
+                    <i class="fas fa-university text-green-600 mr-2"></i>
+                    Bank details
+                  </div>
+                  <div class="text-sm text-gray-600">Account + IFSC</div>
+                </div>
+                <div class="flex flex-col items-end gap-2">
+                  <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full whitespace-nowrap">
+                    <i class="fas fa-check mr-1"></i>Added
+                  </span>
+                  <button class="text-purple-600 hover:text-purple-700 text-sm font-semibold smooth-transition">
+                    <i class="fas fa-edit mr-1"></i>Edit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent my-6"></div>
+          
+          <!-- Terms & Conditions -->
+          <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-lg p-4 mb-6">
+            <label class="flex items-start cursor-pointer group">
+              <input 
+                type="checkbox" 
+                checked 
+                class="w-5 h-5 mt-0.5 text-purple-600 border-2 border-gray-300 rounded smooth-transition focus:ring-2 focus:ring-purple-500 cursor-pointer"
+              />
+              <span class="ml-3 text-sm text-gray-700 leading-relaxed">
+                I accept <a href="#" class="text-purple-600 font-semibold hover:underline">Plaready SLA</a> and <a href="#" class="text-purple-600 font-semibold hover:underline">commission terms</a>
+              </span>
+            </label>
+          </div>
+          
+          <!-- Submit Button -->
+          <a 
+            href="dashboard.html" 
+            class="w-full inline-flex items-center justify-center px-6 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl smooth-transition hover:from-purple-600 hover:to-pink-600"
+          >
+            <i class="fas fa-paper-plane mr-2"></i>
+            Submit for approval
+          </a>
+          
+          <p class="text-xs text-center text-gray-500 mt-3">
+            <i class="fas fa-info-circle mr-1"></i>
+            Approval typically takes 24-48 hours
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Note -->
+    <div class="text-center mt-8 px-4 py-3 glass-card rounded-lg text-gray-500 text-sm">
+      <i class="fas fa-info-circle mr-2"></i>
+      Synthetic data only. Prototype for UI/UX validation.
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

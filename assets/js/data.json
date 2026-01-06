@@ -1,0 +1,274 @@
+{
+  "user": {
+    "name": "Aarav Mehta",
+    "phone": "+91 98XXXX4321",
+    "email": "aarav@example.com",
+    "addresses": [
+      {
+        "label": "Home",
+        "line1": "12, Green Park",
+        "line2": "Hauz Khas",
+        "city": "New Delhi",
+        "pincode": "110016"
+      },
+      {
+        "label": "Work",
+        "line1": "Plaready Tower, Sector 62",
+        "line2": "Noida",
+        "city": "Noida",
+        "pincode": "201301"
+      }
+    ]
+  },
+  "serviceable_areas": [
+    {
+      "city": "New Delhi",
+      "zones": [
+        "South Delhi",
+        "Central Delhi",
+        "Dwarka"
+      ]
+    },
+    {
+      "city": "Noida",
+      "zones": [
+        "Sector 62",
+        "Sector 18",
+        "Noida Extension"
+      ]
+    }
+  ],
+  "services": [
+    {
+      "id": "SVC-STR",
+      "name": "Racquet Stringing",
+      "category": "Stringing",
+      "base_price": 499,
+      "sla_std": "48 hrs",
+      "sla_exp": "24 hrs"
+    },
+    {
+      "id": "SVC-GRP",
+      "name": "Grip Replacement",
+      "category": "Repair",
+      "base_price": 199,
+      "sla_std": "48 hrs",
+      "sla_exp": "24 hrs"
+    },
+    {
+      "id": "SVC-GRM",
+      "name": "Grommet Repair",
+      "category": "Repair",
+      "base_price": 149,
+      "sla_std": "72 hrs",
+      "sla_exp": "36 hrs"
+    }
+  ],
+  "catalog": {
+    "sports": [
+      "Badminton",
+      "Tennis",
+      "Squash"
+    ],
+    "string_types": [
+      {
+        "brand": "Yonex",
+        "model": "BG-65",
+        "price_add": 0
+      },
+      {
+        "brand": "Yonex",
+        "model": "BG-80",
+        "price_add": 150
+      },
+      {
+        "brand": "Li-Ning",
+        "model": "No.1",
+        "price_add": 120
+      },
+      {
+        "brand": "Babolat",
+        "model": "RPM Blast",
+        "price_add": 200
+      },
+      {
+        "brand": "Tecnifibre",
+        "model": "X-One",
+        "price_add": 220
+      }
+    ],
+    "tension": [
+      18,
+      20,
+      22,
+      24,
+      26,
+      28
+    ],
+    "urgency": [
+      {
+        "key": "standard",
+        "label": "Standard (48 hrs)",
+        "multiplier": 1.0
+      },
+      {
+        "key": "express",
+        "label": "Express (24 hrs)",
+        "multiplier": 1.35
+      }
+    ],
+    "pickup_slots": [
+      {
+        "date": "2025-12-15",
+        "slots": [
+          "09:00-11:00",
+          "11:00-13:00",
+          "18:00-20:00"
+        ]
+      },
+      {
+        "date": "2025-12-16",
+        "slots": [
+          "09:00-11:00",
+          "11:00-13:00",
+          "18:00-20:00"
+        ]
+      },
+      {
+        "date": "2025-12-17",
+        "slots": [
+          "09:00-11:00",
+          "11:00-13:00",
+          "18:00-20:00"
+        ]
+      }
+    ]
+  },
+  "partners": [
+    {
+      "id": "P-102",
+      "name": "ShuttlePro Stringing",
+      "area": "South Delhi",
+      "rating": 4.7,
+      "completed": 1280,
+      "commission_pct": 18
+    },
+    {
+      "id": "P-205",
+      "name": "Baseline Racquet Care",
+      "area": "Central Delhi",
+      "rating": 4.5,
+      "completed": 840,
+      "commission_pct": 20
+    },
+    {
+      "id": "P-311",
+      "name": "SquashFix Studio",
+      "area": "Dwarka",
+      "rating": 4.6,
+      "completed": 560,
+      "commission_pct": 19
+    }
+  ],
+  "orders": [
+    {
+      "id": "ORD-24091",
+      "status": "Out for delivery",
+      "sport": "Badminton",
+      "service": "Racquet Stringing",
+      "string": "Yonex BG-80",
+      "tension": "24 lbs",
+      "urgency": "Express",
+      "price": 899,
+      "pickup": {
+        "date": "2025-12-13",
+        "slot": "11:00-13:00",
+        "provider": "Porter (Demo)",
+        "rider": "Ravi (RJ-14)"
+      },
+      "timeline": [
+        {
+          "t": "2025-12-13 11:12",
+          "s": "Pickup requested"
+        },
+        {
+          "t": "2025-12-13 11:40",
+          "s": "Picked up"
+        },
+        {
+          "t": "2025-12-13 13:10",
+          "s": "Arrived at partner"
+        },
+        {
+          "t": "2025-12-13 17:50",
+          "s": "Repair in progress"
+        },
+        {
+          "t": "2025-12-14 10:15",
+          "s": "Job completed"
+        },
+        {
+          "t": "2025-12-14 12:05",
+          "s": "Out for delivery"
+        }
+      ],
+      "partner": "ShuttlePro Stringing",
+      "payment": "Paid (UPI)",
+      "address": "Home"
+    },
+    {
+      "id": "ORD-24062",
+      "status": "Completed",
+      "sport": "Tennis",
+      "service": "Grip Replacement",
+      "string": "-",
+      "tension": "-",
+      "urgency": "Standard",
+      "price": 249,
+      "pickup": {
+        "date": "2025-12-10",
+        "slot": "18:00-20:00",
+        "provider": "Porter (Demo)",
+        "rider": "Amit (DL-09)"
+      },
+      "timeline": [
+        {
+          "t": "2025-12-10 18:10",
+          "s": "Picked up"
+        },
+        {
+          "t": "2025-12-11 12:30",
+          "s": "Job completed"
+        },
+        {
+          "t": "2025-12-11 18:40",
+          "s": "Delivered"
+        }
+      ],
+      "partner": "Baseline Racquet Care",
+      "payment": "Paid (Card)",
+      "address": "Work"
+    }
+  ],
+  "coupons": [
+    {
+      "code": "PLAY100",
+      "desc": "\u20b9100 off on stringing (min \u20b9699)",
+      "min": 699,
+      "off": 100
+    },
+    {
+      "code": "FIRST50",
+      "desc": "\u20b950 off on first order",
+      "min": 199,
+      "off": 50
+    }
+  ],
+  "admin_metrics": {
+    "orders_today": 37,
+    "revenue_today": 31240,
+    "active_partners": 14,
+    "avg_fulfillment_hours": 28.6,
+    "city": "New Delhi (MVP)"
+  }
+}

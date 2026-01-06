@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Plaready Prototype</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .smooth-transition {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .slide-in {
+      animation: slideInUp 0.5s ease-out forwards;
+    }
+    
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hover-lift {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .gradient-border {
+      position: relative;
+      background: linear-gradient(white, white) padding-box,
+                  linear-gradient(135deg, #3b82f6, #8b5cf6) border-box;
+      border: 2px solid transparent;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50/30 min-h-screen">
+  
+  <!-- Navigation Bar -->
+  <nav class="glass-card sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="index.html" class="flex items-center space-x-3 smooth-transition hover:opacity-80">
+          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <i class="fas fa-racquet text-white text-xl"></i>
+          </div>
+          <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Plaready Prototype
+          </span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+    <!-- Hero Section -->
+    <div class="glass-card rounded-2xl shadow-xl p-8 mb-6 slide-in">
+      <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+        Plaready V1 Clickable Prototype
+      </h1>
+      <p class="text-gray-600 text-lg leading-relaxed">
+        Hyperlocal marketplace for racquet stringing and repair with at-home booking, pickup & drop via logistics, transparent pricing, and service tracking.
+      </p>
+      
+      <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent my-6"></div>
+      
+      <!-- Module Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Customer App Card -->
+        <div class="glass-card rounded-xl p-6 hover-lift smooth-transition border border-blue-100">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-lg">
+              <i class="fas fa-mobile-alt text-white text-xl"></i>
+            </div>
+            <h2 class="text-xl font-bold text-gray-800">Customer Mobile App</h2>
+          </div>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Browse services, configure string/tension, book pickup, pay online, and track order.
+          </p>
+          <a href="customer/home.html" class="inline-flex items-center justify-center w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium rounded-lg shadow-lg hover:shadow-xl smooth-transition hover:from-blue-600 hover:to-blue-700">
+            <i class="fas fa-arrow-right mr-2"></i>
+            Open customer flow
+          </a>
+        </div>
+
+        <!-- Partner Module Card -->
+        <div class="glass-card rounded-xl p-6 hover-lift smooth-transition border border-purple-100">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
+              <i class="fas fa-toolbox text-white text-xl"></i>
+            </div>
+            <h2 class="text-xl font-bold text-gray-800">Partner Module</h2>
+          </div>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Onboarding, KYC, accept orders, update repair status, and view payouts.
+          </p>
+          <a href="partner/dashboard.html" class="inline-flex items-center justify-center w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-purple-600 text-white font-medium rounded-lg shadow-lg hover:shadow-xl smooth-transition hover:from-purple-600 hover:to-purple-700">
+            <i class="fas fa-arrow-right mr-2"></i>
+            Open partner panel
+          </a>
+        </div>
+
+        <!-- Admin Dashboard Card -->
+        <div class="glass-card rounded-xl p-6 hover-lift smooth-transition border border-indigo-100">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg">
+              <i class="fas fa-chart-line text-white text-xl"></i>
+            </div>
+            <h2 class="text-xl font-bold text-gray-800">Admin & Ops Dashboard</h2>
+          </div>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Order management, partner approvals, pricing/commission, promos, analytics.
+          </p>
+          <a href="admin/overview.html" class="inline-flex items-center justify-center w-full px-6 py-3 bg-gradient-to-r from-indigo-500 to-indigo-600 text-white font-medium rounded-lg shadow-lg hover:shadow-xl smooth-transition hover:from-indigo-600 hover:to-indigo-700">
+            <i class="fas fa-arrow-right mr-2"></i>
+            Open admin dashboard
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Two Column Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      
+      <!-- Prototype Coverage Card -->
+      <div class="glass-card rounded-2xl shadow-xl p-8 slide-in hover-lift">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+          <i class="fas fa-check-circle text-green-500 mr-3"></i>
+          Prototype Coverage (MVP)
+        </h2>
+        
+        <div class="space-y-4">
+          <!-- Coverage Item 1 -->
+          <div class="flex items-start justify-between p-4 bg-white/50 rounded-lg border border-gray-100 smooth-transition hover:border-green-300">
+            <div class="flex-1">
+              <div class="font-semibold text-gray-800 mb-1">Customer booking in ≤ 4 steps</div>
+              <div class="text-sm text-gray-500">Service → Configure → Pickup slot → Pay</div>
+            </div>
+            <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full whitespace-nowrap ml-4">
+              <i class="fas fa-check mr-1"></i>Covered
+            </span>
+          </div>
+
+          <!-- Coverage Item 2 -->
+          <div class="flex items-start justify-between p-4 bg-white/50 rounded-lg border border-gray-100 smooth-transition hover:border-green-300">
+            <div class="flex-1">
+              <div class="font-semibold text-gray-800 mb-1">Order tracking</div>
+              <div class="text-sm text-gray-500">Pickup → Repair → Delivery → Completed</div>
+            </div>
+            <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full whitespace-nowrap ml-4">
+              <i class="fas fa-check mr-1"></i>Covered
+            </span>
+          </div>
+
+          <!-- Coverage Item 3 -->
+          <div class="flex items-start justify-between p-4 bg-white/50 rounded-lg border border-gray-100 smooth-transition hover:border-green-300">
+            <div class="flex-1">
+              <div class="font-semibold text-gray-800 mb-1">Promos and pricing transparency</div>
+              <div class="text-sm text-gray-500">Auto price calc + coupon apply</div>
+            </div>
+            <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full whitespace-nowrap ml-4">
+              <i class="fas fa-check mr-1"></i>Covered
+            </span>
+          </div>
+
+          <!-- Coverage Item 4 -->
+          <div class="flex items-start justify-between p-4 bg-white/50 rounded-lg border border-gray-100 smooth-transition hover:border-yellow-300">
+            <div class="flex-1">
+              <div class="font-semibold text-gray-800 mb-1">Logistics integration concept</div>
+              <div class="text-sm text-gray-500">Porter-like API and fallback manual flow</div>
+            </div>
+            <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full whitespace-nowrap ml-4">
+              <i class="fas fa-flask mr-1"></i>Demo
+            </span>
+          </div>
+
+          <!-- Coverage Item 5 -->
+          <div class="flex items-start justify-between p-4 bg-white/50 rounded-lg border border-gray-100 smooth-transition hover:border-green-300">
+            <div class="flex-1">
+              <div class="font-semibold text-gray-800 mb-1">Partner onboarding & order management</div>
+              <div class="text-sm text-gray-500">KYC + accept/reject + status updates</div>
+            </div>
+            <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full whitespace-nowrap ml-4">
+              <i class="fas fa-check mr-1"></i>Covered
+            </span>
+          </div>
+
+          <!-- Coverage Item 6 -->
+          <div class="flex items-start justify-between p-4 bg-white/50 rounded-lg border border-gray-100 smooth-transition hover:border-green-300">
+            <div class="flex-1">
+              <div class="font-semibold text-gray-800 mb-1">Admin ops controls</div>
+              <div class="text-sm text-gray-500">Assign partner, refunds, pricing, commissions, coupons, analytics</div>
+            </div>
+            <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full whitespace-nowrap ml-4">
+              <i class="fas fa-check mr-1"></i>Covered
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Design System Card -->
+      <div class="glass-card rounded-2xl shadow-xl p-8 slide-in hover-lift">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+          <i class="fas fa-palette text-purple-500 mr-3"></i>
+          Design System Snapshot
+        </h2>
+        
+        <p class="text-gray-600 mb-6 leading-relaxed">
+          Sports-focused, clean, modern. Dark premium base with bright brand accents for affordances and status.
+        </p>
+        
+        <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-6"></div>
+        
+        <!-- Color Badges -->
+        <div class="flex flex-wrap gap-3 mb-6">
+          <span class="px-4 py-2 bg-gradient-to-r from-emerald-400 to-teal-400 text-white text-sm font-semibold rounded-lg shadow-md">
+            Brand Accent
+          </span>
+          <span class="px-4 py-2 bg-green-100 text-green-700 text-sm font-semibold rounded-lg border border-green-200">
+            <i class="fas fa-check mr-1"></i>Success
+          </span>
+          <span class="px-4 py-2 bg-yellow-100 text-yellow-700 text-sm font-semibold rounded-lg border border-yellow-200">
+            <i class="fas fa-exclamation mr-1"></i>Warning
+          </span>
+          <span class="px-4 py-2 bg-red-100 text-red-700 text-sm font-semibold rounded-lg border border-red-200">
+            <i class="fas fa-times mr-1"></i>Issue
+          </span>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="customer/styleguide.html" class="flex-1 inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-purple-500 to-purple-600 text-white font-medium rounded-lg shadow-lg hover:shadow-xl smooth-transition hover:from-purple-600 hover:to-purple-700">
+            <i class="fas fa-swatchbook mr-2"></i>
+            Open styleguide
+          </a>
+          <a href="assets/js/data.json" class="flex-1 inline-flex items-center justify-center px-6 py-3 bg-white text-purple-600 font-medium rounded-lg border-2 border-purple-300 shadow-md hover:shadow-lg smooth-transition hover:bg-purple-50">
+            <i class="fas fa-code mr-2"></i>
+            View data (JSON)
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Note -->
+    <div class="text-center mt-8 px-4 py-3 glass-card rounded-lg text-gray-500 text-sm">
+      <i class="fas fa-info-circle mr-2"></i>
+      Synthetic data only. Prototype for UI/UX validation.
+    </div>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Admin Partners - Plaready</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .smooth-transition {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .slide-in {
+      animation: slideInUp 0.5s ease-out forwards;
+    }
+    
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hover-lift {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -5px rgba(0, 0, 0, 0.15);
+    }
+    
+    .partner-item {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .partner-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, #6366f1, #8b5cf6);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50/30 min-h-screen">
+  
+  <!-- Navigation Bar -->
+  <nav class="glass-card sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row justify-between items-center py-3 gap-4">
+        <!-- Brand -->
+        <a href="../index.html" class="flex items-center space-x-3 smooth-transition hover:opacity-80">
+          <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg">
+            <i class="fas fa-chart-line text-white text-xl"></i>
+          </div>
+          <span class="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            Plaready Prototype
+          </span>
+        </a>
+        
+        <!-- Navigation Links -->
+        <div class="flex flex-wrap items-center gap-2">
+          <a href="overview.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-th-large mr-2"></i>Overview
+          </a>
+          <a href="orders.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-shopping-cart mr-2"></i>Orders
+          </a>
+          <a href="partners.html" class="px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-medium rounded-lg shadow-md smooth-transition hover:shadow-lg">
+            <i class="fas fa-handshake mr-2"></i>Partners
+          </a>
+          <a href="pricing.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-tags mr-2"></i>Pricing
+          </a>
+          <a href="promos.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-gift mr-2"></i>Promos
+          </a>
+          <a href="analytics.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-chart-bar mr-2"></i>Analytics
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+    <!-- Header Section -->
+    <div class="glass-card rounded-2xl shadow-xl p-8 mb-6 slide-in">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-4">
+          <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-lg">
+            <i class="fas fa-users-cog text-white text-2xl"></i>
+          </div>
+          <div>
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              Partner Management
+            </h1>
+            <p class="text-gray-600 text-lg mt-1">
+              Approvals, performance metrics, area coverage, enable/disable.
+            </p>
+          </div>
+        </div>
+        <div class="hidden md:flex items-center gap-3">
+          <button class="px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold rounded-lg shadow-md hover:shadow-lg smooth-transition">
+            <i class="fas fa-plus mr-2"></i>Add Partner
+          </button>
+          <button class="px-4 py-2 bg-white text-gray-700 font-semibold rounded-lg border-2 border-gray-300 shadow-md hover:shadow-lg smooth-transition hover:bg-gray-50">
+            <i class="fas fa-filter mr-2"></i>Filter
+          </button>
+        </div>
+      </div>
+      
+      <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent my-6"></div>
+      
+      <!-- Filter/Search Bar -->
+      <div class="flex flex-col sm:flex-row gap-3 mb-6">
+        <div class="flex-1 relative">
+          <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+          <input 
+            type="text" 
+            placeholder="Search partners by name, area, or ID..." 
+            class="w-full pl-12 pr-4 py-3 bg-white border-2 border-gray-200 rounded-lg smooth-transition focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+          />
+        </div>
+        <select class="px-4 py-3 bg-white border-2 border-gray-200 rounded-lg smooth-transition focus:outline-none focus:border-indigo-500 cursor-pointer">
+          <option>All Areas</option>
+          <option>South Delhi</option>
+          <option>Central Delhi</option>
+          <option>North Delhi</option>
+          <option>East Delhi</option>
+        </select>
+        <select class="px-4 py-3 bg-white border-2 border-gray-200 rounded-lg smooth-transition focus:outline-none focus:border-indigo-500 cursor-pointer">
+          <option>All Status</option>
+          <option>Active</option>
+          <option>Pending Approval</option>
+          <option>Disabled</option>
+        </select>
+      </div>
+      
+      <!-- Partners List -->
+      <div class="space-y-4" id="plist">
+        <!-- Partners will be dynamically loaded here -->
+      </div>
+
+      <!-- Summary Stats -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-8 pt-6 border-t-2 border-gray-200">
+        <div class="text-center p-4 bg-blue-50 rounded-lg">
+          <div class="text-sm text-gray-600 mb-1">Total Partners</div>
+          <div class="text-2xl font-bold text-blue-600" id="totalPartners">0</div>
+        </div>
+        <div class="text-center p-4 bg-green-50 rounded-lg">
+          <div class="text-sm text-gray-600 mb-1">Active</div>
+          <div class="text-2xl font-bold text-green-600" id="activePartners">0</div>
+        </div>
+        <div class="text-center p-4 bg-yellow-50 rounded-lg">
+          <div class="text-sm text-gray-600 mb-1">Pending Approval</div>
+          <div class="text-2xl font-bold text-yellow-600" id="pendingPartners">0</div>
+        </div>
+        <div class="text-center p-4 bg-purple-50 rounded-lg">
+          <div class="text-sm text-gray-600 mb-1">Avg Rating</div>
+          <div class="text-2xl font-bold text-purple-600" id="avgRating">0.0</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Note -->
+    <div class="text-center mt-8 px-4 py-3 glass-card rounded-lg text-gray-500 text-sm">
+      <i class="fas fa-info-circle mr-2"></i>
+      Synthetic data only. Prototype for UI/UX validation.
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    (async ()=>{
+      const data = await loadData();
+      const wrap = document.getElementById('plist');
+      
+      let totalRating = 0;
+      let activeCount = 0;
+      
+      data.partners.forEach((p, index) => {
+        totalRating += parseFloat(p.rating);
+        
+        // Determine status for demo purposes
+        const isActive = index % 3 !== 2;
+        const isPending = index % 3 === 2;
+        if(isActive) activeCount++;
+        
+        const statusBadge = isActive 
+          ? '<span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full"><i class="fas fa-check-circle mr-1"></i>Active</span>'
+          : '<span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full"><i class="fas fa-clock mr-1"></i>Pending</span>';
+        
+        wrap.insertAdjacentHTML('beforeend', `
+          <div class="glass-card partner-item rounded-xl p-6 hover-lift smooth-transition border border-indigo-100">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+              <!-- Partner Info -->
+              <div class="flex-1 pl-4">
+                <div class="flex items-center gap-3 mb-3">
+                  <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center shadow-md">
+                    <i class="fas fa-store text-white text-lg"></i>
+                  </div>
+                  <div>
+                    <div class="font-bold text-gray-800 text-lg">${p.name}</div>
+                    ${statusBadge}
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+                  <div class="flex items-center gap-2">
+                    <i class="fas fa-map-marker-alt text-indigo-500"></i>
+                    <span class="text-gray-700"><strong>Area:</strong> ${p.area}</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i class="fas fa-star text-amber-500"></i>
+                    <span class="text-gray-700"><strong>Rating:</strong> ${p.rating}</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i class="fas fa-check-circle text-green-500"></i>
+                    <span class="text-gray-700"><strong>Completed:</strong> ${p.completed}</span>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Action Buttons -->
+              <div class="flex gap-3 w-full lg:w-auto">
+                <button class="flex-1 lg:flex-none inline-flex items-center justify-center px-5 py-3 bg-white text-red-600 font-semibold rounded-lg border-2 border-red-300 shadow-md hover:shadow-lg smooth-transition hover:bg-red-50">
+                  <i class="fas fa-ban mr-2"></i>Disable
+                </button>
+                <button class="flex-1 lg:flex-none inline-flex items-center justify-center px-5 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl smooth-transition hover:from-green-600 hover:to-emerald-600">
+                  <i class="fas fa-check mr-2"></i>Approve
+                </button>
+              </div>
+            </div>
+          </div>
+        `);
+      });
+      
+      // Update summary stats
+      document.getElementById('totalPartners').textContent = data.partners.length;
+      document.getElementById('activePartners').textContent = activeCount;
+      document.getElementById('pendingPartners').textContent = data.partners.length - activeCount;
+      document.getElementById('avgRating').textContent = (totalRating / data.partners.length).toFixed(1);
+    })();
+  </script>
+</body>
+</html>

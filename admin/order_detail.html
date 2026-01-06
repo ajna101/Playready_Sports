@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Admin Order Detail - Plaready</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .smooth-transition {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .slide-in {
+      animation: slideInUp 0.5s ease-out forwards;
+    }
+    
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hover-lift {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -5px rgba(0, 0, 0, 0.15);
+    }
+    
+    .input-focus {
+      transition: all 0.3s ease;
+    }
+    
+    .input-focus:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50/30 min-h-screen">
+  
+  <!-- Navigation Bar -->
+  <nav class="glass-card sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row justify-between items-center py-3 gap-4">
+        <!-- Brand -->
+        <a href="../index.html" class="flex items-center space-x-3 smooth-transition hover:opacity-80">
+          <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg">
+            <i class="fas fa-chart-line text-white text-xl"></i>
+          </div>
+          <span class="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            Plaready Prototype
+          </span>
+        </a>
+        
+        <!-- Navigation Links -->
+        <div class="flex flex-wrap items-center gap-2">
+          <a href="overview.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-th-large mr-2"></i>Overview
+          </a>
+          <a href="orders.html" class="px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-medium rounded-lg shadow-md smooth-transition hover:shadow-lg">
+            <i class="fas fa-shopping-cart mr-2"></i>Orders
+          </a>
+          <a href="partners.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-handshake mr-2"></i>Partners
+          </a>
+          <a href="pricing.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-tags mr-2"></i>Pricing
+          </a>
+          <a href="promos.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-gift mr-2"></i>Promos
+          </a>
+          <a href="analytics.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-chart-bar mr-2"></i>Analytics
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+    <!-- Header Section -->
+    <div class="glass-card rounded-2xl shadow-xl p-8 mb-6 slide-in">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+        <div class="flex items-center gap-4">
+          <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-lg">
+            <i class="fas fa-clipboard-check text-white text-2xl"></i>
+          </div>
+          <div>
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              Admin Order Detail
+            </h1>
+            <p class="text-lg font-semibold text-gray-600 mt-1" id="oid">ORD</p>
+          </div>
+        </div>
+        <a href="orders.html" class="inline-flex items-center px-6 py-3 bg-white text-gray-700 font-medium rounded-lg border-2 border-gray-300 shadow-md hover:shadow-lg smooth-transition hover:bg-gray-50">
+          <i class="fas fa-arrow-left mr-2"></i>
+          Back to Orders
+        </a>
+      </div>
+      
+      <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent my-6"></div>
+      
+      <!-- Two Column Grid - Customer & Ops Actions -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        
+        <!-- Customer Details Card -->
+        <div class="glass-card rounded-xl p-6 hover-lift smooth-transition border border-blue-100">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+            <i class="fas fa-user-circle text-blue-500 mr-3"></i>
+            Customer Details
+          </h2>
+          
+          <div class="space-y-4">
+            <!-- Customer Name & Phone -->
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-lg p-4">
+              <div class="flex items-center gap-3 mb-2">
+                <i class="fas fa-user text-blue-600 text-lg"></i>
+                <div>
+                  <div class="text-sm text-gray-600 mb-1">Customer Name</div>
+                  <div class="font-bold text-gray-800">Aarav Mehta</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 mt-3">
+                <i class="fas fa-phone text-blue-600 text-lg"></i>
+                <div>
+                  <div class="text-sm text-gray-600 mb-1">Phone</div>
+                  <div class="font-bold text-gray-800">+91 98XXXX4321</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Address -->
+            <div class="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-200 rounded-lg p-4">
+              <div class="flex items-start gap-3">
+                <i class="fas fa-map-marker-alt text-purple-600 text-lg mt-1"></i>
+                <div class="flex-1">
+                  <div class="text-sm text-gray-600 mb-1">Delivery Address</div>
+                  <div class="font-semibold text-gray-800">Home</div>
+                  <div class="text-sm text-gray-700 mt-1">12, Green Park, New Delhi 110016</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Payment Status -->
+            <div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-lg p-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <i class="fas fa-credit-card text-green-600 text-lg"></i>
+                  <div>
+                    <div class="text-sm text-gray-600 mb-1">Payment Status</div>
+                    <div class="font-bold text-gray-800">Paid via UPI</div>
+                  </div>
+                </div>
+                <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
+                  <i class="fas fa-check-circle mr-1"></i>Verified
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ops Actions Card -->
+        <div class="glass-card rounded-xl p-6 hover-lift smooth-transition border border-orange-100">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+            <i class="fas fa-cogs text-orange-500 mr-3"></i>
+            Operations Actions
+          </h2>
+          
+          <div class="space-y-3 mb-6">
+            <!-- Assign Partner -->
+            <button 
+              id="assign"
+              class="w-full inline-flex items-center justify-center px-6 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl smooth-transition hover:from-indigo-600 hover:to-purple-700"
+            >
+              <i class="fas fa-user-plus mr-2"></i>
+              Assign Partner
+            </button>
+
+            <!-- Manual Override -->
+            <button 
+              id="override"
+              class="w-full inline-flex items-center justify-center px-6 py-4 bg-white text-indigo-600 text-lg font-semibold rounded-lg border-2 border-indigo-300 shadow-md hover:shadow-lg smooth-transition hover:bg-indigo-50"
+            >
+              <i class="fas fa-edit mr-2"></i>
+              Manual Override
+            </button>
+
+            <!-- Issue Refund -->
+            <button 
+              id="refund"
+              class="w-full inline-flex items-center justify-center px-6 py-4 bg-gradient-to-r from-red-500 to-rose-500 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl smooth-transition hover:from-red-600 hover:to-rose-600"
+            >
+              <i class="fas fa-undo mr-2"></i>
+              Issue Refund
+            </button>
+          </div>
+
+          <!-- Refund Info Box -->
+          <div class="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-4">
+            <p class="text-xs text-blue-800 flex items-start">
+              <i class="fas fa-info-circle mt-0.5 mr-2 text-blue-500"></i>
+              <span><strong>Refund flow:</strong> Mark refund initiated → Gateway webhook confirms → Notify customer.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Partner Assignment & Logistics Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      
+      <!-- Partner Assignment Card -->
+      <div class="glass-card rounded-2xl shadow-xl p-8 slide-in hover-lift">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+          <i class="fas fa-handshake text-purple-500 mr-3"></i>
+          Partner Assignment
+        </h2>
+        
+        <div class="space-y-5">
+          <!-- Partner Selector -->
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2">
+              <i class="fas fa-store mr-2 text-purple-500"></i>Select Partner
+            </label>
+            <select 
+              id="partnerSel"
+              class="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-lg input-focus smooth-transition text-gray-800 font-medium appearance-none cursor-pointer"
+            >
+              <option>Loading partners...</option>
+            </select>
+          </div>
+
+          <!-- Assignment Info -->
+          <div class="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-200 rounded-lg p-4">
+            <div class="flex items-start gap-3">
+              <i class="fas fa-lightbulb text-purple-600 text-lg"></i>
+              <div class="text-sm text-gray-700">
+                <strong>Auto-matching criteria:</strong> Proximity, availability, rating, and current workload are considered.
+              </div>
+            </div>
+          </div>
+
+          <!-- Save Assignment Button -->
+          <a 
+            href="orders.html" 
+            class="w-full inline-flex items-center justify-center px-6 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl smooth-transition hover:from-purple-600 hover:to-pink-600"
+          >
+            <i class="fas fa-save mr-2"></i>
+            Save Assignment
+          </a>
+
+          <!-- Current Assignment Status (Optional) -->
+          <div class="border-t-2 border-gray-200 pt-4">
+            <div class="flex items-center justify-between text-sm">
+              <span class="text-gray-600">Current Status:</span>
+              <span class="px-3 py-1 bg-yellow-100 text-yellow-700 font-semibold rounded-full text-xs">
+                <i class="fas fa-hourglass-half mr-1"></i>Unassigned
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logistics Card -->
+      <div class="glass-card rounded-2xl shadow-xl p-8 slide-in hover-lift">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+          <i class="fas fa-truck text-blue-500 mr-3"></i>
+          Logistics Management
+        </h2>
+        
+        <div class="space-y-4">
+          <!-- Provider Info -->
+          <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-lg p-4">
+            <div class="flex items-center gap-3 mb-3">
+              <i class="fas fa-building text-blue-600 text-lg"></i>
+              <div>
+                <div class="text-sm text-gray-600 mb-1">Logistics Provider</div>
+                <div class="font-bold text-gray-800 flex items-center">
+                  Porter
+                  <span class="ml-2 px-2 py-0.5 bg-orange-100 text-orange-700 text-xs font-semibold rounded">Demo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pickup Job Info -->
+          <div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-lg p-4">
+            <div class="flex items-start gap-3">
+              <i class="fas fa-clipboard-list text-green-600 text-lg mt-1"></i>
+              <div class="flex-1">
+                <div class="text-sm text-gray-600 mb-1">Pickup Job ID</div>
+                <div class="font-bold text-gray-800 mb-2">PUP-77821</div>
+                <div class="flex items-center gap-2">
+                  <span class="text-sm text-gray-700">Status:</span>
+                  <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
+                    <i class="fas fa-motorcycle mr-1"></i>Rider assigned
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fallback Option -->
+          <div class="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-200 rounded-lg p-4">
+            <div class="flex items-start gap-3">
+              <i class="fas fa-exclamation-triangle text-amber-600 text-lg"></i>
+              <div class="flex-1">
+                <div class="text-sm font-semibold text-gray-800 mb-1">Fallback Option</div>
+                <div class="text-sm text-gray-700">Create manual pickup request if automated logistics fail.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Manual Request Button -->
+          <a 
+            href="#" 
+            class="w-full inline-flex items-center justify-center px-6 py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl smooth-transition hover:from-amber-600 hover:to-orange-600"
+          >
+            <i class="fas fa-hand-paper mr-2"></i>
+            Create Manual Request
+          </a>
+
+          <!-- Tracking Info -->
+          <div class="border-t-2 border-gray-200 pt-4">
+            <div class="text-xs text-gray-600 flex items-center">
+              <i class="fas fa-map-marked-alt mr-2 text-blue-500"></i>
+              Live tracking available once pickup is confirmed
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Note -->
+    <div class="text-center mt-8 px-4 py-3 glass-card rounded-lg text-gray-500 text-sm">
+      <i class="fas fa-info-circle mr-2"></i>
+      Synthetic data only. Prototype for UI/UX validation.
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    (async ()=>{
+      const data = await loadData();
+      const oid = qs('o') || data.orders[0].id;
+      document.getElementById('oid').textContent = oid;
+      const sel = document.getElementById('partnerSel');
+      sel.innerHTML = '';
+      data.partners.forEach(p=>sel.insertAdjacentHTML('beforeend', `<option>${p.name} (${p.area})</option>`));
+      document.getElementById('assign').addEventListener('click', e=>{e.preventDefault(); alert('Partner assignment saved (demo)');});
+      document.getElementById('override').addEventListener('click', e=>{e.preventDefault(); alert('Override applied (demo)');});
+      document.getElementById('refund').addEventListener('click', e=>{e.preventDefault(); alert('Refund initiated (demo)');});
+    })();
+  </script>
+</body>
+</html>

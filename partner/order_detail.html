@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Order Detail - Plaready</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .smooth-transition {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .slide-in {
+      animation: slideInUp 0.5s ease-out forwards;
+    }
+    
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hover-lift {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -5px rgba(0, 0, 0, 0.15);
+    }
+    
+    .pulse-animation {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.7;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50/30 min-h-screen">
+  
+  <!-- Navigation Bar -->
+  <nav class="glass-card sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row justify-between items-center py-3 gap-4">
+        <!-- Brand -->
+        <a href="../index.html" class="flex items-center space-x-3 smooth-transition hover:opacity-80">
+          <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
+            <i class="fas fa-toolbox text-white text-xl"></i>
+          </div>
+          <span class="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            Plaready Prototype
+          </span>
+        </a>
+        
+        <!-- Navigation Links -->
+        <div class="flex flex-wrap items-center gap-2">
+          <a href="dashboard.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-home mr-2"></i>Dashboard
+          </a>
+          <a href="orders.html" class="px-4 py-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white font-medium rounded-lg shadow-md smooth-transition hover:shadow-lg">
+            <i class="fas fa-list-ul mr-2"></i>Orders
+          </a>
+          <a href="payouts.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-wallet mr-2"></i>Payouts
+          </a>
+          <a href="onboarding.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-user-check mr-2"></i>Onboarding
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+    <!-- Header Section -->
+    <div class="glass-card rounded-2xl shadow-xl p-8 mb-6 slide-in">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+        <div class="flex items-center gap-4">
+          <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl shadow-lg">
+            <i class="fas fa-clipboard-list text-white text-2xl"></i>
+          </div>
+          <div>
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              Order Detail
+            </h1>
+            <p class="text-lg font-semibold text-gray-600 mt-1" id="oid">ORD</p>
+          </div>
+        </div>
+        <a href="orders.html" class="inline-flex items-center px-6 py-3 bg-white text-gray-700 font-medium rounded-lg border-2 border-gray-300 shadow-md hover:shadow-lg smooth-transition hover:bg-gray-50">
+          <i class="fas fa-arrow-left mr-2"></i>
+          Back to Orders
+        </a>
+      </div>
+      
+      <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent my-6"></div>
+      
+      <!-- Two Column Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        
+        <!-- Job Details Card -->
+        <div class="glass-card rounded-xl p-6 hover-lift smooth-transition border border-blue-100">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+            <i class="fas fa-briefcase text-blue-500 mr-3"></i>
+            Job Details
+          </h2>
+          
+          <div class="space-y-4">
+            <!-- Service Info -->
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-lg p-4">
+              <div class="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">Service Information</div>
+              <div class="text-lg font-bold text-gray-800" id="job">Loading...</div>
+            </div>
+            
+            <!-- Configuration -->
+            <div class="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-200 rounded-lg p-4">
+              <div class="text-sm font-semibold text-purple-600 uppercase tracking-wide mb-2">Configuration</div>
+              <div class="text-base font-semibold text-gray-700" id="cfg">Loading...</div>
+            </div>
+            
+            <!-- Status Timeline Placeholder -->
+            <div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-lg p-4">
+              <div class="text-sm font-semibold text-green-600 uppercase tracking-wide mb-3">Order Timeline</div>
+              <div class="space-y-2">
+                <div class="flex items-center gap-3">
+                  <div class="w-3 h-3 bg-green-500 rounded-full pulse-animation"></div>
+                  <span class="text-sm text-gray-700">Order placed</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
+                  <span class="text-sm text-gray-500">Pickup scheduled</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
+                  <span class="text-sm text-gray-500">In progress</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions Card -->
+        <div class="glass-card rounded-xl p-6 hover-lift smooth-transition border border-purple-100">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+            <i class="fas fa-bolt text-purple-500 mr-3"></i>
+            Quick Actions
+          </h2>
+          
+          <div class="space-y-3">
+            <!-- Accept Job -->
+            <button 
+              id="acceptBtn"
+              class="w-full inline-flex items-center justify-center px-6 py-4 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl smooth-transition hover:from-green-600 hover:to-emerald-600"
+            >
+              <i class="fas fa-check-circle mr-2"></i>
+              Accept job
+            </button>
+            
+            <!-- Update Status -->
+            <button 
+              id="statusBtn"
+              class="w-full inline-flex items-center justify-center px-6 py-4 bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl smooth-transition hover:from-blue-600 hover:to-indigo-600"
+            >
+              <i class="fas fa-sync-alt mr-2"></i>
+              Update status
+            </button>
+            
+            <!-- Mark Completed -->
+            <button 
+              id="completeBtn"
+              class="w-full inline-flex items-center justify-center px-6 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl smooth-transition hover:from-purple-600 hover:to-pink-600"
+            >
+              <i class="fas fa-flag-checkered mr-2"></i>
+              Mark completed
+            </button>
+            
+            <!-- Raise Dispute -->
+            <button 
+              id="disputeBtn"
+              class="w-full inline-flex items-center justify-center px-6 py-4 bg-gradient-to-r from-red-500 to-rose-500 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl smooth-transition hover:from-red-600 hover:to-rose-600"
+            >
+              <i class="fas fa-exclamation-triangle mr-2"></i>
+              Raise dispute
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status Update Demo Section -->
+    <div class="glass-card rounded-2xl shadow-xl p-8 slide-in hover-lift">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-bold text-gray-800 flex items-center">
+          <i class="fas fa-cogs text-orange-500 mr-3"></i>
+          Update Status (Demo)
+        </h2>
+        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-sm font-semibold rounded-full">
+          <i class="fas fa-flask mr-1"></i>Demo Mode
+        </span>
+      </div>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a 
+          href="order_detail.html?o=ORD-24091&st=At%20partner" 
+          class="inline-flex items-center justify-center px-6 py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl smooth-transition hover:from-amber-600 hover:to-orange-600"
+        >
+          <i class="fas fa-store mr-2"></i>
+          At partner
+        </a>
+        <a 
+          href="order_detail.html?o=ORD-24091&st=Repair%20in%20progress" 
+          class="inline-flex items-center justify-center px-6 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl smooth-transition hover:from-blue-600 hover:to-cyan-600"
+        >
+          <i class="fas fa-wrench mr-2"></i>
+          Repair in progress
+        </a>
+        <a 
+          href="order_detail.html?o=ORD-24091&st=Job%20completed" 
+          class="inline-flex items-center justify-center px-6 py-4 bg-gradient-to-r from-green-500 to-teal-500 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl smooth-transition hover:from-green-600 hover:to-teal-600"
+        >
+          <i class="fas fa-check-double mr-2"></i>
+          Job completed
+        </a>
+      </div>
+      
+      <div class="mt-6 bg-blue-50 border-l-4 border-blue-500 rounded-lg p-4">
+        <p class="text-sm text-blue-800 flex items-start">
+          <i class="fas fa-info-circle mt-0.5 mr-3 text-blue-500"></i>
+          <span>In production, status updates write to backend and trigger customer notifications.</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer Note -->
+    <div class="text-center mt-8 px-4 py-3 glass-card rounded-lg text-gray-500 text-sm">
+      <i class="fas fa-info-circle mr-2"></i>
+      Synthetic data only. Prototype for UI/UX validation.
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    (async ()=>{
+      const data = await loadData();
+      const oid = qs('o') || data.orders[0].id;
+      document.getElementById('oid').textContent = oid;
+      const act = qs('act');
+      const st = qs('st');
+      const o = data.orders.find(x=>x.id===oid) || data.orders[0];
+      
+      // Display job details with icons
+      const jobElement = document.getElementById('job');
+      jobElement.innerHTML = `
+        <div class="flex flex-wrap gap-2">
+          <span class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">
+            <i class="fas fa-concierge-bell mr-2"></i>${o.service}
+          </span>
+          <span class="inline-flex items-center px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold">
+            <i class="fas fa-running mr-2"></i>${o.sport}
+          </span>
+          <span class="inline-flex items-center px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm font-semibold">
+            <i class="fas fa-bolt mr-2"></i>${o.urgency}
+          </span>
+        </div>
+      `;
+      
+      document.getElementById('cfg').innerHTML = `
+        <div class="space-y-2">
+          <div class="flex items-center text-gray-700">
+            <i class="fas fa-grip-lines text-purple-500 mr-2"></i>
+            <strong>String:</strong>&nbsp;${o.string}
+          </div>
+          <div class="flex items-center text-gray-700">
+            <i class="fas fa-tachometer-alt text-purple-500 mr-2"></i>
+            <strong>Tension:</strong>&nbsp;${o.tension}
+          </div>
+          <div class="flex items-center text-lg font-bold text-green-600">
+            <i class="fas fa-rupee-sign mr-2"></i>
+            ${fmtINR(o.price)}
+          </div>
+        </div>
+      `;
+      
+      if(act==='accept'){ 
+        document.getElementById('acceptBtn').innerHTML = '<i class="fas fa-check-double mr-2"></i>Accepted (demo)';
+        document.getElementById('acceptBtn').classList.add('opacity-75');
+      }
+      if(act==='reject'){ 
+        document.getElementById('acceptBtn').innerHTML = '<i class="fas fa-times-circle mr-2"></i>Rejected (demo)'; 
+        document.getElementById('acceptBtn').classList.remove('from-green-500', 'to-emerald-500');
+        document.getElementById('acceptBtn').classList.add('from-gray-500', 'to-gray-600', 'opacity-75');
+      }
+      if(st){ 
+        document.getElementById('statusBtn').innerHTML = `<i class="fas fa-info-circle mr-2"></i>Status: ${st}`; 
+      }
+      
+      document.getElementById('completeBtn').addEventListener('click', (e)=>{ 
+        e.preventDefault(); 
+        alert('Marked completed (demo)'); 
+      });
+      
+      document.getElementById('disputeBtn').addEventListener('click', (e)=>{ 
+        e.preventDefault(); 
+        alert('Dispute raised (demo)'); 
+      });
+    })();
+  </script>
+</body>
+</html>

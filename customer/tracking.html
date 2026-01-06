@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Tracking - Plaready</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .smooth-transition {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .slide-in {
+      animation: slideInUp 0.5s ease-out forwards;
+    }
+    
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hover-lift {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -5px rgba(0, 0, 0, 0.15);
+    }
+    
+    .phone-frame {
+      max-width: 480px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-left: 40px;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 35px;
+      bottom: -15px;
+      width: 2px;
+      background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+    }
+    
+    .timeline-item:last-child::before {
+      display: none;
+    }
+    
+    .timeline-dot {
+      position: absolute;
+      left: 8px;
+      top: 20px;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border: 3px solid #3b82f6;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .timeline-dot.active {
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50/30 min-h-screen">
+  
+  <!-- Desktop Navigation Bar (Hidden on mobile) -->
+  <nav class="glass-card sticky top-0 z-50 shadow-lg hidden md:block">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-3">
+        <!-- Brand -->
+        <a href="../index.html" class="flex items-center space-x-3 smooth-transition hover:opacity-80">
+          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-lg">
+            <i class="fas fa-racquet text-white text-xl"></i>
+          </div>
+          <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Plaready Prototype
+          </span>
+        </a>
+        
+        <!-- Navigation Links -->
+        <div class="flex items-center gap-2">
+          <a href="home.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-home mr-2"></i>Home
+          </a>
+          <a href="orders.html" class="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium rounded-lg shadow-md smooth-transition hover:shadow-lg">
+            <i class="fas fa-box mr-2"></i>Orders
+          </a>
+          <a href="profile.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-user mr-2"></i>Profile
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container mx-auto px-4 py-8">
+    
+    <!-- Phone Frame -->
+    <div class="phone-frame">
+      <!-- Phone Content -->
+      <div class="p-6 pb-24 min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
+        
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-6 slide-in">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+              <i class="fas fa-map-marked-alt text-white text-xl"></i>
+            </div>
+            <div>
+              <h1 class="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                Order Tracking
+              </h1>
+              <p class="text-sm text-gray-600 mt-0.5" id="oid">
+                Order #12345
+              </p>
+            </div>
+          </div>
+          <a 
+            href="orders.html" 
+            class="inline-flex items-center px-4 py-2 bg-white text-gray-700 font-semibold rounded-lg border-2 border-gray-300 shadow-md hover:shadow-lg smooth-transition hover:bg-gray-50"
+          >
+            <i class="fas fa-list mr-2"></i>All Orders
+          </a>
+        </div>
+        
+        <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-6"></div>
+        
+        <!-- Current Status Card -->
+        <div class="glass-card rounded-xl p-6 mb-6 border border-blue-100 hover-lift smooth-transition bg-gradient-to-br from-blue-50 to-indigo-50">
+          <div class="flex items-start justify-between gap-4 mb-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center shadow-md">
+                  <i class="fas fa-tools text-white"></i>
+                </div>
+                <div>
+                  <div class="text-lg font-bold text-gray-800" id="status">Pickup requested</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 text-sm text-gray-700 pl-12">
+                <i class="fas fa-clock text-blue-500"></i>
+                <span id="eta">ETA: within 2 hours</span>
+              </div>
+            </div>
+            <span class="px-4 py-2 bg-amber-100 text-amber-700 text-sm font-semibold rounded-full flex items-center" id="badge">
+              <i class="fas fa-spinner mr-1"></i>In progress
+            </span>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="mt-6 pt-6 border-t-2 border-blue-200">
+            <div class="flex items-center justify-between mb-2 text-xs font-semibold text-gray-600">
+              <span>Progress</span>
+              <span id="progressPercent">60%</span>
+            </div>
+            <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+              <div id="progressBar" class="h-full bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full smooth-transition" style="width: 60%"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-6"></div>
+        
+        <!-- Timeline Section -->
+        <div class="mb-6">
+          <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+            <i class="fas fa-history text-purple-500 mr-2"></i>
+            Order Timeline
+          </h2>
+          
+          <div class="space-y-1" id="timeline">
+            <!-- Timeline items will be populated here -->
+          </div>
+        </div>
+        
+        <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-6"></div>
+        
+        <!-- Action Buttons -->
+        <div class="grid grid-cols-2 gap-3 mb-6">
+          <a href="support.html" class="glass-card rounded-xl p-4 hover-lift smooth-transition border border-orange-100 flex flex-col items-center gap-2 group">
+            <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-amber-500 rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 smooth-transition">
+              <i class="fas fa-life-ring text-white text-xl"></i>
+            </div>
+            <span class="font-semibold text-gray-800 text-sm text-center">Need Help</span>
+          </a>
+          
+          <a href="review.html" class="glass-card rounded-xl p-4 hover-lift smooth-transition border border-yellow-100 flex flex-col items-center gap-2 group bg-gradient-to-br from-yellow-50 to-amber-50">
+            <div class="w-12 h-12 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 smooth-transition">
+              <i class="fas fa-star text-white text-xl"></i>
+            </div>
+            <span class="font-semibold text-gray-800 text-sm text-center">Rate Service</span>
+          </a>
+        </div>
+
+        <!-- Live Updates Notice -->
+        <div class="bg-gradient-to-r from-green-50 to-emerald-50 border-l-4 border-green-500 rounded-lg p-4">
+          <div class="flex items-start gap-2">
+            <i class="fas fa-sync-alt text-green-600 mt-0.5"></i>
+            <div class="text-sm text-green-800">
+              <strong>Live Updates:</strong> You'll receive real-time notifications as your order progresses through each stage.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bottom Navigation -->
+      <div class="fixed bottom-0 left-0 right-0 max-w-[480px] mx-auto glass-card border-t-2 border-gray-200 py-3 px-6">
+        <div class="flex justify-around items-center">
+          <a href="home.html" class="flex flex-col items-center gap-1 text-gray-400 hover:text-blue-600 smooth-transition">
+            <i class="fas fa-home text-xl"></i>
+            <span class="text-xs font-medium">Home</span>
+          </a>
+          <a href="orders.html" class="flex flex-col items-center gap-1 text-blue-600 smooth-transition">
+            <i class="fas fa-box text-xl"></i>
+            <span class="text-xs font-semibold">Orders</span>
+          </a>
+          <a href="profile.html" class="flex flex-col items-center gap-1 text-gray-400 hover:text-blue-600 smooth-transition">
+            <i class="fas fa-user text-xl"></i>
+            <span class="text-xs font-medium">Profile</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Note -->
+    <div class="text-center mt-8 px-4 py-3 glass-card rounded-lg text-gray-500 text-sm max-w-[480px] mx-auto">
+      <i class="fas fa-info-circle mr-2"></i>
+      Synthetic data only. Prototype for UI/UX validation.
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    (async ()=>{
+      const data = await loadData();
+      const orderId = qs('order') || data.orders[0].id;
+      document.getElementById('oid').textContent = 'Order ' + orderId;
+
+      // If coming from payment flow, generate a short demo timeline
+      let timeline = [
+        {t: new Date().toISOString().slice(0,16).replace('T',' '), s:'Order placed', icon: 'check-circle', active: true},
+        {t: '2025-12-15 09:10', s:'Pickup requested', icon: 'bell', active: true},
+        {t: '2025-12-15 10:05', s:'Rider assigned (Porter demo)', icon: 'user-check', active: true},
+        {t: '2025-12-15 11:20', s:'Picked up', icon: 'box', active: true},
+        {t: '2025-12-15 13:00', s:'Arrived at partner', icon: 'store', active: true},
+        {t: '2025-12-15 16:30', s:'Repair in progress', icon: 'tools', active: true},
+        {t: '', s:'Job completed', icon: 'check-double', active: false},
+        {t: '', s:'Out for delivery', icon: 'truck', active: false},
+        {t: '', s:'Delivered', icon: 'home', active: false}
+      ];
+      
+      document.getElementById('status').textContent = 'Repair in progress';
+      document.getElementById('badge').className = 'px-4 py-2 bg-amber-100 text-amber-700 text-sm font-semibold rounded-full flex items-center';
+      document.getElementById('badge').innerHTML = '<i class="fas fa-spinner mr-1"></i>In progress';
+
+      const tl = document.getElementById('timeline');
+      timeline.forEach((x, index) => {
+        const delay = index * 0.05;
+        const activeClass = x.active ? 'active' : '';
+        const textColor = x.active ? 'text-gray-800' : 'text-gray-400';
+        const iconColor = x.active ? 'text-blue-500' : 'text-gray-400';
+        
+        tl.insertAdjacentHTML('beforeend', `
+          <div class="timeline-item glass-card rounded-lg p-4 hover-lift smooth-transition border ${x.active ? 'border-blue-100 bg-white' : 'border-gray-100 bg-gray-50'} slide-in" style="animation-delay: ${delay}s">
+            <div class="timeline-dot ${activeClass}"></div>
+            <div class="flex items-start gap-3">
+              <i class="fas fa-${x.icon} ${iconColor} text-lg mt-0.5"></i>
+              <div class="flex-1">
+                <div class="font-bold ${textColor} mb-1">${x.s}</div>
+                ${x.t ? `<div class="text-xs text-gray-500 flex items-center"><i class="fas fa-clock mr-1"></i>${x.t}</div>` : '<div class="text-xs text-gray-400 italic">Pending</div>'}
+              </div>
+            </div>
+          </div>
+        `);
+      });
+
+      // Calculate progress
+      const completedSteps = timeline.filter(x => x.active).length;
+      const totalSteps = timeline.length;
+      const progressPercent = Math.round((completedSteps / totalSteps) * 100);
+      document.getElementById('progressPercent').textContent = progressPercent + '%';
+      document.getElementById('progressBar').style.width = progressPercent + '%';
+    })();
+  </script>
+</body>
+</html>

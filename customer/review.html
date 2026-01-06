@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Review - Plaready</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .smooth-transition {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .slide-in {
+      animation: slideInUp 0.5s ease-out forwards;
+    }
+    
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hover-lift {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -5px rgba(0, 0, 0, 0.15);
+    }
+    
+    .phone-frame {
+      max-width: 480px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+    
+    .input-focus {
+      transition: all 0.3s ease;
+    }
+    
+    .input-focus:focus {
+      outline: none;
+      border-color: #f59e0b;
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+    }
+    
+    .star-rating {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+    
+    .star {
+      font-size: 2.5rem;
+      color: #d1d5db;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .star:hover,
+    .star.active {
+      color: #fbbf24;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50/30 min-h-screen">
+  
+  <!-- Desktop Navigation Bar (Hidden on mobile) -->
+  <nav class="glass-card sticky top-0 z-50 shadow-lg hidden md:block">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-3">
+        <!-- Brand -->
+        <a href="../index.html" class="flex items-center space-x-3 smooth-transition hover:opacity-80">
+          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-lg">
+            <i class="fas fa-racquet text-white text-xl"></i>
+          </div>
+          <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Plaready Prototype
+          </span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container mx-auto px-4 py-8 md:py-16">
+    
+    <!-- Phone Frame -->
+    <div class="phone-frame">
+      <!-- Phone Content -->
+      <div class="p-8 min-h-[600px] bg-gradient-to-br from-amber-50 to-orange-50 flex flex-col justify-center">
+        
+        <!-- Header -->
+        <div class="text-center mb-8 slide-in">
+          <div class="w-20 h-20 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-lg mx-auto mb-4">
+            <i class="fas fa-star text-white text-3xl"></i>
+          </div>
+          <h1 class="text-3xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent mb-2">
+            Rate Your Service
+          </h1>
+          <p class="text-gray-600 text-sm">
+            <i class="fas fa-heart mr-2 text-amber-500"></i>
+            Your feedback helps us improve quality
+          </p>
+        </div>
+        
+        <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-8"></div>
+        
+        <!-- Star Rating Section -->
+        <div class="mb-8">
+          <label class="block text-center text-sm font-semibold text-gray-700 mb-4">
+            How was your experience?
+          </label>
+          <div class="star-rating mb-4" id="starRating">
+            <i class="fas fa-star star" data-rating="1"></i>
+            <i class="fas fa-star star" data-rating="2"></i>
+            <i class="fas fa-star star" data-rating="3"></i>
+            <i class="fas fa-star star" data-rating="4"></i>
+            <i class="fas fa-star star" data-rating="5"></i>
+          </div>
+          <div class="text-center">
+            <span class="px-4 py-2 bg-amber-100 text-amber-700 text-sm font-semibold rounded-full" id="ratingText">
+              Tap stars to rate
+            </span>
+          </div>
+        </div>
+
+        <!-- Rating Dropdown (Hidden, for fallback) -->
+        <div class="mb-6 hidden">
+          <label class="block text-sm font-semibold text-gray-700 mb-2">
+            <i class="fas fa-star mr-2 text-amber-500"></i>Rating
+          </label>
+          <select 
+            id="ratingSelect"
+            class="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl input-focus smooth-transition text-gray-800 font-medium appearance-none cursor-pointer"
+          >
+            <option value="5">5 - Excellent</option>
+            <option value="4">4 - Good</option>
+            <option value="3">3 - Okay</option>
+            <option value="2">2 - Poor</option>
+            <option value="1">1 - Very poor</option>
+          </select>
+        </div>
+
+        <!-- Feedback Input -->
+        <div class="mb-8">
+          <label class="block text-sm font-semibold text-gray-700 mb-2">
+            <i class="fas fa-comment-dots mr-2 text-amber-500"></i>Share Your Feedback (Optional)
+          </label>
+          <textarea 
+            id="feedback"
+            class="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl input-focus smooth-transition text-gray-800 resize-none"
+            rows="4"
+            placeholder="Tell us what went well or what we can improve..."
+          ></textarea>
+          <p class="text-xs text-gray-500 mt-2 flex items-center">
+            <i class="fas fa-info-circle mr-1"></i>
+            Your feedback is shared with our partner to maintain quality
+          </p>
+        </div>
+
+        <!-- Quick Feedback Tags -->
+        <div class="mb-8">
+          <label class="block text-sm font-semibold text-gray-700 mb-3">
+            <i class="fas fa-tags mr-2 text-amber-500"></i>Quick Tags (Optional)
+          </label>
+          <div class="flex flex-wrap gap-2">
+            <button class="px-3 py-1.5 bg-white text-gray-700 text-sm font-medium rounded-full border-2 border-gray-300 hover:bg-amber-50 hover:border-amber-400 smooth-transition" onclick="this.classList.toggle('bg-amber-100'); this.classList.toggle('border-amber-500');">
+              <i class="fas fa-check-circle mr-1"></i>Professional
+            </button>
+            <button class="px-3 py-1.5 bg-white text-gray-700 text-sm font-medium rounded-full border-2 border-gray-300 hover:bg-amber-50 hover:border-amber-400 smooth-transition" onclick="this.classList.toggle('bg-amber-100'); this.classList.toggle('border-amber-500');">
+              <i class="fas fa-clock mr-1"></i>On Time
+            </button>
+            <button class="px-3 py-1.5 bg-white text-gray-700 text-sm font-medium rounded-full border-2 border-gray-300 hover:bg-amber-50 hover:border-amber-400 smooth-transition" onclick="this.classList.toggle('bg-amber-100'); this.classList.toggle('border-amber-500');">
+              <i class="fas fa-gem mr-1"></i>Quality Work
+            </button>
+            <button class="px-3 py-1.5 bg-white text-gray-700 text-sm font-medium rounded-full border-2 border-gray-300 hover:bg-amber-50 hover:border-amber-400 smooth-transition" onclick="this.classList.toggle('bg-amber-100'); this.classList.toggle('border-amber-500');">
+              <i class="fas fa-smile mr-1"></i>Friendly
+            </button>
+            <button class="px-3 py-1.5 bg-white text-gray-700 text-sm font-medium rounded-full border-2 border-gray-300 hover:bg-amber-50 hover:border-amber-400 smooth-transition" onclick="this.classList.toggle('bg-amber-100'); this.classList.toggle('border-amber-500');">
+              <i class="fas fa-dollar-sign mr-1"></i>Fair Price
+            </button>
+          </div>
+        </div>
+        
+        <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-8"></div>
+        
+        <!-- Submit Button -->
+        <a 
+          href="orders.html" 
+          id="submitBtn"
+          class="w-full inline-flex items-center justify-center px-6 py-4 bg-gradient-to-r from-amber-500 to-orange-600 text-white text-lg font-bold rounded-xl shadow-lg hover:shadow-xl smooth-transition hover:from-amber-600 hover:to-orange-700 mb-4"
+        >
+          <i class="fas fa-paper-plane mr-2"></i>
+          Submit Review
+        </a>
+
+        <!-- Skip Option -->
+        <div class="text-center">
+          <a href="orders.html" class="text-sm text-gray-600 hover:text-amber-600 smooth-transition">
+            Skip for now
+          </a>
+        </div>
+
+        <!-- Incentive Notice -->
+        <div class="mt-6 bg-gradient-to-r from-green-50 to-emerald-50 border-l-4 border-green-500 rounded-lg p-4">
+          <div class="flex items-start gap-2">
+            <i class="fas fa-gift text-green-600 mt-0.5"></i>
+            <div class="text-sm text-green-800">
+              <strong>Thank you!</strong> Reviews help our partners improve and earn you loyalty points for future discounts.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Note -->
+    <div class="text-center mt-8 px-4 py-3 glass-card rounded-lg text-gray-500 text-sm max-w-[480px] mx-auto">
+      <i class="fas fa-info-circle mr-2"></i>
+      Synthetic data only. Prototype for UI/UX validation.
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    // Star rating functionality
+    const stars = document.querySelectorAll('.star');
+    const ratingText = document.getElementById('ratingText');
+    const ratingSelect = document.getElementById('ratingSelect');
+    let selectedRating = 5;
+    
+    const ratingLabels = {
+      1: '😞 Very Poor',
+      2: '😕 Poor',
+      3: '😐 Okay',
+      4: '😊 Good',
+      5: '⭐ Excellent'
+    };
+
+    stars.forEach(star => {
+      star.addEventListener('click', function() {
+        selectedRating = parseInt(this.dataset.rating);
+        updateStars(selectedRating);
+        ratingSelect.value = selectedRating;
+      });
+      
+      star.addEventListener('mouseenter', function() {
+        const rating = parseInt(this.dataset.rating);
+        updateStars(rating, true);
+      });
+    });
+
+    document.getElementById('starRating').addEventListener('mouseleave', function() {
+      updateStars(selectedRating);
+    });
+
+    function updateStars(rating, isHover = false) {
+      stars.forEach((star, index) => {
+        if (index < rating) {
+          star.classList.add('active');
+        } else {
+          star.classList.remove('active');
+        }
+      });
+      
+      if (!isHover) {
+        ratingText.textContent = ratingLabels[rating];
+        ratingText.className = rating >= 4 
+          ? 'px-4 py-2 bg-green-100 text-green-700 text-sm font-semibold rounded-full'
+          : rating === 3
+          ? 'px-4 py-2 bg-yellow-100 text-yellow-700 text-sm font-semibold rounded-full'
+          : 'px-4 py-2 bg-red-100 text-red-700 text-sm font-semibold rounded-full';
+      }
+    }
+
+    // Initialize with 5 stars
+    updateStars(5);
+  </script>
+</body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Admin Pricing - Plaready</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .smooth-transition {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .slide-in {
+      animation: slideInUp 0.5s ease-out forwards;
+    }
+    
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hover-lift {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -5px rgba(0, 0, 0, 0.15);
+    }
+    
+    .input-focus {
+      transition: all 0.3s ease;
+    }
+    
+    .input-focus:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50/30 min-h-screen">
+  
+  <!-- Navigation Bar -->
+  <nav class="glass-card sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row justify-between items-center py-3 gap-4">
+        <!-- Brand -->
+        <a href="../index.html" class="flex items-center space-x-3 smooth-transition hover:opacity-80">
+          <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg">
+            <i class="fas fa-chart-line text-white text-xl"></i>
+          </div>
+          <span class="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            Plaready Prototype
+          </span>
+        </a>
+        
+        <!-- Navigation Links -->
+        <div class="flex flex-wrap items-center gap-2">
+          <a href="overview.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-th-large mr-2"></i>Overview
+          </a>
+          <a href="orders.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-shopping-cart mr-2"></i>Orders
+          </a>
+          <a href="partners.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-handshake mr-2"></i>Partners
+          </a>
+          <a href="pricing.html" class="px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-medium rounded-lg shadow-md smooth-transition hover:shadow-lg">
+            <i class="fas fa-tags mr-2"></i>Pricing
+          </a>
+          <a href="promos.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-gift mr-2"></i>Promos
+          </a>
+          <a href="analytics.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-chart-bar mr-2"></i>Analytics
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+    <!-- Header Section -->
+    <div class="glass-card rounded-2xl shadow-xl p-8 mb-6 slide-in">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-4">
+          <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-lg">
+            <i class="fas fa-dollar-sign text-white text-2xl"></i>
+          </div>
+          <div>
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              Pricing & Commission
+            </h1>
+            <p class="text-gray-600 text-lg mt-1">
+              Service pricing, partner commissions, dynamic pricing rules.
+            </p>
+          </div>
+        </div>
+        <div class="hidden md:flex items-center gap-2">
+          <div class="px-4 py-2 bg-blue-50 border-2 border-blue-200 rounded-lg text-sm font-semibold text-blue-700">
+            <i class="fas fa-info-circle mr-2"></i>Last updated: Today
+          </div>
+        </div>
+      </div>
+      
+      <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent my-6"></div>
+      
+      <!-- Two Column Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        
+        <!-- Service Pricing Card -->
+        <div class="glass-card rounded-xl p-6 hover-lift smooth-transition border border-blue-100">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+            <i class="fas fa-list-ul text-blue-500 mr-3"></i>
+            Service Pricing
+          </h2>
+          
+          <div class="space-y-4">
+            <!-- Pricing Item 1 - Racquet Stringing -->
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-xl p-5 smooth-transition hover:border-blue-300 hover:shadow-md">
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center shadow-md">
+                      <i class="fas fa-grip-lines text-white"></i>
+                    </div>
+                    <div class="font-bold text-gray-800 text-lg">Racquet Stringing</div>
+                  </div>
+                  <div class="grid grid-cols-2 gap-3 text-sm">
+                    <div class="flex flex-col">
+                      <span class="text-gray-500 text-xs mb-1">Base Price</span>
+                      <span class="font-bold text-green-600 text-lg flex items-center">
+                        <i class="fas fa-rupee-sign mr-1"></i>499
+                      </span>
+                    </div>
+                    <div class="flex flex-col">
+                      <span class="text-gray-500 text-xs mb-1">Express Markup</span>
+                      <span class="font-bold text-amber-600 text-lg">+35%</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="inline-flex items-center px-5 py-2.5 bg-white text-blue-600 font-semibold rounded-lg border-2 border-blue-300 shadow-md hover:shadow-lg smooth-transition hover:bg-blue-50">
+                  <i class="fas fa-edit mr-2"></i>Edit
+                </button>
+              </div>
+            </div>
+
+            <!-- Pricing Item 2 - Grip Replacement -->
+            <div class="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-200 rounded-xl p-5 smooth-transition hover:border-purple-300 hover:shadow-md">
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center shadow-md">
+                      <i class="fas fa-hand-paper text-white"></i>
+                    </div>
+                    <div class="font-bold text-gray-800 text-lg">Grip Replacement</div>
+                  </div>
+                  <div class="grid grid-cols-2 gap-3 text-sm">
+                    <div class="flex flex-col">
+                      <span class="text-gray-500 text-xs mb-1">Base Price</span>
+                      <span class="font-bold text-green-600 text-lg flex items-center">
+                        <i class="fas fa-rupee-sign mr-1"></i>199
+                      </span>
+                    </div>
+                    <div class="flex flex-col">
+                      <span class="text-gray-500 text-xs mb-1">Express Markup</span>
+                      <span class="font-bold text-amber-600 text-lg">+35%</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="inline-flex items-center px-5 py-2.5 bg-white text-purple-600 font-semibold rounded-lg border-2 border-purple-300 shadow-md hover:shadow-lg smooth-transition hover:bg-purple-50">
+                  <i class="fas fa-edit mr-2"></i>Edit
+                </button>
+              </div>
+            </div>
+
+            <!-- Pricing Item 3 - Grommet Repair -->
+            <div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl p-5 smooth-transition hover:border-green-300 hover:shadow-md">
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg flex items-center justify-center shadow-md">
+                      <i class="fas fa-tools text-white"></i>
+                    </div>
+                    <div class="font-bold text-gray-800 text-lg">Grommet Repair</div>
+                  </div>
+                  <div class="grid grid-cols-2 gap-3 text-sm">
+                    <div class="flex flex-col">
+                      <span class="text-gray-500 text-xs mb-1">Base Price</span>
+                      <span class="font-bold text-green-600 text-lg flex items-center">
+                        <i class="fas fa-rupee-sign mr-1"></i>149
+                      </span>
+                    </div>
+                    <div class="flex flex-col">
+                      <span class="text-gray-500 text-xs mb-1">Express Markup</span>
+                      <span class="font-bold text-amber-600 text-lg">+35%</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="inline-flex items-center px-5 py-2.5 bg-white text-green-600 font-semibold rounded-lg border-2 border-green-300 shadow-md hover:shadow-lg smooth-transition hover:bg-green-50">
+                  <i class="fas fa-edit mr-2"></i>Edit
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add Service Button -->
+          <div class="mt-6 pt-6 border-t-2 border-gray-200">
+            <button class="w-full inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl smooth-transition hover:from-blue-600 hover:to-indigo-600">
+              <i class="fas fa-plus-circle mr-2"></i>Add New Service
+            </button>
+          </div>
+        </div>
+
+        <!-- Commission Rules Card -->
+        <div class="glass-card rounded-xl p-6 hover-lift smooth-transition border border-purple-100">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+            <i class="fas fa-percentage text-purple-500 mr-3"></i>
+            Commission Rules
+          </h2>
+          
+          <div class="space-y-6">
+            <!-- Default Commission -->
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-2">
+                <i class="fas fa-handshake mr-2 text-purple-500"></i>Default Partner Commission
+              </label>
+              <select class="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-lg input-focus smooth-transition text-gray-800 font-medium appearance-none cursor-pointer">
+                <option>18%</option>
+                <option selected>20%</option>
+                <option>22%</option>
+              </select>
+              <p class="text-xs text-gray-500 mt-2 flex items-center">
+                <i class="fas fa-info-circle mr-1"></i>
+                Applied to all partners unless tier-specific rates are set
+              </p>
+            </div>
+
+            <!-- Commission Breakdown Visual -->
+            <div class="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-200 rounded-lg p-4">
+              <div class="text-sm font-semibold text-gray-700 mb-3">Commission Breakdown Example</div>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">Service Price:</span>
+                  <span class="font-bold text-gray-800">₹499</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">Partner Commission (20%):</span>
+                  <span class="font-bold text-red-600">-₹99.80</span>
+                </div>
+                <div class="h-px bg-purple-300 my-2"></div>
+                <div class="flex justify-between items-center">
+                  <span class="font-semibold text-gray-700">Platform Revenue:</span>
+                  <span class="font-bold text-green-600">₹399.20</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dynamic Pricing -->
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-2">
+                <i class="fas fa-chart-line mr-2 text-purple-500"></i>Dynamic Pricing
+              </label>
+              <select class="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-lg input-focus smooth-transition text-gray-800 font-medium appearance-none cursor-pointer">
+                <option selected>Off (MVP)</option>
+                <option>Peak-hour uplift</option>
+                <option>Demand-based uplift</option>
+              </select>
+              <p class="text-xs text-gray-500 mt-2 flex items-center">
+                <i class="fas fa-lightbulb mr-1"></i>
+                Future feature: Auto-adjust pricing based on demand patterns
+              </p>
+            </div>
+
+            <!-- Pricing Strategy Info -->
+            <div class="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-4">
+              <div class="flex items-start gap-2">
+                <i class="fas fa-rocket text-blue-600 mt-1"></i>
+                <div class="text-sm text-blue-800">
+                  <strong>Pro Tip:</strong> Consider seasonal adjustments during tournament seasons for optimal revenue.
+                </div>
+              </div>
+            </div>
+
+            <!-- Save Button -->
+            <div class="pt-4">
+              <a 
+                href="overview.html" 
+                class="w-full inline-flex items-center justify-center px-6 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl smooth-transition hover:from-purple-600 hover:to-pink-600"
+              >
+                <i class="fas fa-save mr-2"></i>
+                Save Changes
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing Summary Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 slide-in">
+      <div class="glass-card rounded-xl p-6 hover-lift smooth-transition border border-green-100">
+        <div class="flex items-center justify-between mb-3">
+          <div>
+            <div class="text-sm text-gray-500 mb-1">Avg Service Price</div>
+            <div class="text-3xl font-bold text-green-600 flex items-center">
+              <i class="fas fa-rupee-sign text-2xl mr-1"></i>282
+            </div>
+          </div>
+          <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg flex items-center justify-center shadow-md">
+            <i class="fas fa-tags text-white text-xl"></i>
+          </div>
+        </div>
+        <p class="text-xs text-gray-600">Across all services</p>
+      </div>
+
+      <div class="glass-card rounded-xl p-6 hover-lift smooth-transition border border-purple-100">
+        <div class="flex items-center justify-between mb-3">
+          <div>
+            <div class="text-sm text-gray-500 mb-1">Commission Rate</div>
+            <div class="text-3xl font-bold text-purple-600">20%</div>
+          </div>
+          <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center shadow-md">
+            <i class="fas fa-percentage text-white text-xl"></i>
+          </div>
+        </div>
+        <p class="text-xs text-gray-600">Default partner rate</p>
+      </div>
+
+      <div class="glass-card rounded-xl p-6 hover-lift smooth-transition border border-amber-100">
+        <div class="flex items-center justify-between mb-3">
+          <div>
+            <div class="text-sm text-gray-500 mb-1">Express Markup</div>
+            <div class="text-3xl font-bold text-amber-600">+35%</div>
+          </div>
+          <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-500 rounded-lg flex items-center justify-center shadow-md">
+            <i class="fas fa-bolt text-white text-xl"></i>
+          </div>
+        </div>
+        <p class="text-xs text-gray-600">Urgent service premium</p>
+      </div>
+    </div>
+
+    <!-- Footer Note -->
+    <div class="text-center mt-8 px-4 py-3 glass-card rounded-lg text-gray-500 text-sm">
+      <i class="fas fa-info-circle mr-2"></i>
+      Synthetic data only. Prototype for UI/UX validation.
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

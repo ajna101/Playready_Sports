@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Pickup - Plaready</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .smooth-transition {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .slide-in {
+      animation: slideInUp 0.5s ease-out forwards;
+    }
+    
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hover-lift {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -5px rgba(0, 0, 0, 0.15);
+    }
+    
+    .phone-frame {
+      max-width: 480px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+    
+    .input-focus {
+      transition: all 0.3s ease;
+    }
+    
+    .input-focus:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50/30 min-h-screen">
+  
+  <!-- Desktop Navigation Bar (Hidden on mobile) -->
+  <nav class="glass-card sticky top-0 z-50 shadow-lg hidden md:block">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-3">
+        <!-- Brand -->
+        <a href="../index.html" class="flex items-center space-x-3 smooth-transition hover:opacity-80">
+          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-lg">
+            <i class="fas fa-racquet text-white text-xl"></i>
+          </div>
+          <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Plaready Prototype
+          </span>
+        </a>
+        
+        <!-- Navigation Links -->
+        <div class="flex items-center gap-2">
+          <a href="home.html" class="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium rounded-lg shadow-md smooth-transition hover:shadow-lg">
+            <i class="fas fa-home mr-2"></i>Home
+          </a>
+          <a href="orders.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-box mr-2"></i>Orders
+          </a>
+          <a href="profile.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-user mr-2"></i>Profile
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container mx-auto px-4 py-8">
+    
+    <!-- Phone Frame -->
+    <div class="phone-frame">
+      <!-- Phone Content -->
+      <div class="p-6 pb-24 min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
+        
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-6 slide-in">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+              <i class="fas fa-map-marked-alt text-white text-xl"></i>
+            </div>
+            <div>
+              <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                Pickup Details
+              </h1>
+              <p class="text-xs text-gray-600 mt-0.5">
+                <i class="fas fa-calendar-check mr-1"></i>Choose slot & address
+              </p>
+            </div>
+          </div>
+          <a 
+            href="service_config.html?svc=SVC-STR" 
+            class="inline-flex items-center px-4 py-2 bg-white text-gray-700 font-semibold rounded-lg border-2 border-gray-300 shadow-md hover:shadow-lg smooth-transition hover:bg-gray-50"
+          >
+            <i class="fas fa-arrow-left mr-2"></i>Back
+          </a>
+        </div>
+        
+        <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-6"></div>
+        
+        <!-- Pickup Schedule Section -->
+        <div class="glass-card rounded-xl p-5 mb-6 border border-blue-100 hover-lift smooth-transition">
+          <h3 class="font-bold text-gray-800 mb-4 flex items-center">
+            <i class="fas fa-clock text-blue-500 mr-2"></i>
+            Pickup Schedule
+          </h3>
+          
+          <div class="space-y-4">
+            <!-- Pickup Date -->
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-2">
+                <i class="fas fa-calendar mr-2 text-blue-500"></i>Pickup Date
+              </label>
+              <select 
+                id="date" 
+                class="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-lg input-focus smooth-transition text-gray-800 font-medium appearance-none cursor-pointer"
+              >
+                <!-- Options populated by JS -->
+              </select>
+            </div>
+
+            <!-- Pickup Slot -->
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-2">
+                <i class="fas fa-clock mr-2 text-blue-500"></i>Pickup Time Slot
+              </label>
+              <select 
+                id="slot" 
+                class="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-lg input-focus smooth-transition text-gray-800 font-medium appearance-none cursor-pointer"
+              >
+                <!-- Options populated by JS -->
+              </select>
+              <p class="text-xs text-gray-500 mt-2 flex items-center">
+                <i class="fas fa-info-circle mr-1"></i>
+                Pickup within selected time window
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Address Section -->
+        <div class="glass-card rounded-xl p-5 mb-6 border border-purple-100 hover-lift smooth-transition">
+          <h3 class="font-bold text-gray-800 mb-4 flex items-center">
+            <i class="fas fa-home text-purple-500 mr-2"></i>
+            Pickup Address
+          </h3>
+          
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2">
+              <i class="fas fa-map-marker-alt mr-2 text-purple-500"></i>Select Address
+            </label>
+            <select 
+              id="addr" 
+              class="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-lg input-focus smooth-transition text-gray-800 font-medium appearance-none cursor-pointer"
+            >
+              <!-- Options populated by JS -->
+            </select>
+            <p class="text-xs text-gray-500 mt-2 flex items-center">
+              <i class="fas fa-truck mr-1"></i>
+              We'll pick up from this address and deliver back here
+            </p>
+          </div>
+        </div>
+
+        <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-6"></div>
+
+        <!-- Order Summary Section -->
+        <div class="glass-card rounded-xl p-5 mb-6 border border-indigo-100">
+          <h3 class="font-bold text-gray-800 mb-3 flex items-center">
+            <i class="fas fa-file-invoice text-indigo-500 mr-2"></i>
+            Order Summary
+          </h3>
+          <div id="summary" class="space-y-2 text-sm text-gray-700">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-6"></div>
+
+        <!-- Total & Payment -->
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <div class="text-sm font-semibold text-gray-600 mb-1">
+              <i class="fas fa-receipt mr-2 text-green-500"></i>Total Amount
+            </div>
+            <div class="text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent flex items-center" id="total">
+              ₹0
+            </div>
+          </div>
+          <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center shadow-lg">
+            <i class="fas fa-rupee-sign text-white text-2xl"></i>
+          </div>
+        </div>
+
+        <!-- Proceed Button -->
+        <a 
+          href="payment.html" 
+          id="pay"
+          class="w-full inline-flex items-center justify-center px-6 py-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-lg font-bold rounded-xl shadow-lg hover:shadow-xl smooth-transition hover:from-blue-600 hover:to-indigo-700 mb-4"
+        >
+          <i class="fas fa-arrow-right mr-2"></i>
+          Proceed to Payment
+        </a>
+
+        <!-- Info Notice -->
+        <div class="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-4">
+          <div class="flex items-start gap-2">
+            <i class="fas fa-truck text-blue-600 mt-0.5"></i>
+            <div class="text-sm text-blue-800">
+              <strong>Logistics:</strong> Pickup and delivery managed by our 3PL partners for seamless service.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bottom Navigation -->
+      <div class="fixed bottom-0 left-0 right-0 max-w-[480px] mx-auto glass-card border-t-2 border-gray-200 py-3 px-6">
+        <div class="flex justify-around items-center">
+          <a href="home.html" class="flex flex-col items-center gap-1 text-blue-600 smooth-transition">
+            <i class="fas fa-home text-xl"></i>
+            <span class="text-xs font-semibold">Home</span>
+          </a>
+          <a href="orders.html" class="flex flex-col items-center gap-1 text-gray-400 hover:text-blue-600 smooth-transition">
+            <i class="fas fa-box text-xl"></i>
+            <span class="text-xs font-medium">Orders</span>
+          </a>
+          <a href="profile.html" class="flex flex-col items-center gap-1 text-gray-400 hover:text-blue-600 smooth-transition">
+            <i class="fas fa-user text-xl"></i>
+            <span class="text-xs font-medium">Profile</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Note -->
+    <div class="text-center mt-8 px-4 py-3 glass-card rounded-lg text-gray-500 text-sm max-w-[480px] mx-auto">
+      <i class="fas fa-info-circle mr-2"></i>
+      Synthetic data only. Prototype for UI/UX validation.
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    (async ()=>{
+      const data = await loadData();
+      const dateSel = document.getElementById('date');
+      const slotSel = document.getElementById('slot');
+      data.catalog.pickup_slots.forEach(d=>dateSel.insertAdjacentHTML('beforeend', `<option value="${d.date}">${d.date}</option>`));
+      
+      function fillSlots(){
+        slotSel.innerHTML = '';
+        const d = data.catalog.pickup_slots.find(x=>x.date===dateSel.value) || data.catalog.pickup_slots[0];
+        d.slots.forEach(s=>slotSel.insertAdjacentHTML('beforeend', `<option>${s}</option>`));
+      }
+      dateSel.addEventListener('change', fillSlots);
+      fillSlots();
+
+      const addrSel = document.getElementById('addr');
+      data.user.addresses.forEach(a=>addrSel.insertAdjacentHTML('beforeend', `<option value="${a.label}">${a.label} · ${a.line1}, ${a.city} ${a.pincode}</option>`));
+
+      const svc = qs('svc')||'SVC-STR';
+      const sport = qs('sport')||'Badminton';
+      const string = qs('string')||'-';
+      const tension = qs('tension')||'-';
+      const urgency = qs('urgency')||'Standard';
+      const price = parseInt(qs('price')||'0',10);
+      const notes = qs('notes')||'';
+      
+      document.getElementById('summary').innerHTML =
+        `<div class="flex items-start gap-2"><i class="fas fa-cog text-blue-500 mt-0.5"></i><div><strong>Service:</strong> ${svc} (${sport})</div></div>` +
+        `<div class="flex items-start gap-2"><i class="fas fa-sliders-h text-purple-500 mt-0.5"></i><div><strong>Config:</strong> ${string} · ${tension} · ${urgency}</div></div>` +
+        (notes ? `<div class="flex items-start gap-2"><i class="fas fa-comment text-green-500 mt-0.5"></i><div><strong>Notes:</strong> ${notes}</div></div>` : '') +
+        `<div class="pt-3 mt-3 border-t border-gray-200 text-xs text-gray-500 flex items-center"><i class="fas fa-shipping-fast mr-1"></i>Pickup & delivery via 3PL partners</div>`;
+      
+      document.getElementById('total').textContent = fmtINR(price);
+
+      function bake(){
+        const q = new URLSearchParams(location.search);
+        q.set('date', dateSel.value);
+        q.set('slot', slotSel.value);
+        q.set('addr', addrSel.value);
+        document.getElementById('pay').href = 'payment.html?' + q.toString();
+      }
+      [dateSel,slotSel,addrSel].forEach(el=>el.addEventListener('change', bake));
+      bake();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Configure Service - Plaready</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .smooth-transition {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .slide-in {
+      animation: slideInUp 0.5s ease-out forwards;
+    }
+    
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hover-lift {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -5px rgba(0, 0, 0, 0.15);
+    }
+    
+    .phone-frame {
+      max-width: 480px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+    
+    .input-focus {
+      transition: all 0.3s ease;
+    }
+    
+    .input-focus:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50/30 min-h-screen">
+  
+  <!-- Desktop Navigation Bar (Hidden on mobile) -->
+  <nav class="glass-card sticky top-0 z-50 shadow-lg hidden md:block">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-3">
+        <!-- Brand -->
+        <a href="../index.html" class="flex items-center space-x-3 smooth-transition hover:opacity-80">
+          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-lg">
+            <i class="fas fa-racquet text-white text-xl"></i>
+          </div>
+          <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Plaready Prototype
+          </span>
+        </a>
+        
+        <!-- Navigation Links -->
+        <div class="flex items-center gap-2">
+          <a href="home.html" class="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium rounded-lg shadow-md smooth-transition hover:shadow-lg">
+            <i class="fas fa-home mr-2"></i>Home
+          </a>
+          <a href="orders.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-box mr-2"></i>Orders
+          </a>
+          <a href="profile.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-user mr-2"></i>Profile
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container mx-auto px-4 py-8">
+    
+    <!-- Phone Frame -->
+    <div class="phone-frame">
+      <!-- Phone Content -->
+      <div class="p-6 pb-24 min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
+        
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-6 slide-in">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+              <i class="fas fa-sliders-h text-white text-xl"></i>
+            </div>
+            <div>
+              <h1 class="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                Configure Service
+              </h1>
+              <p class="text-sm text-gray-600 mt-0.5" id="svcSub">
+                Racquet Stringing
+              </p>
+            </div>
+          </div>
+          <a 
+            href="home.html" 
+            class="inline-flex items-center px-4 py-2 bg-white text-gray-700 font-semibold rounded-lg border-2 border-gray-300 shadow-md hover:shadow-lg smooth-transition hover:bg-gray-50"
+          >
+            <i class="fas fa-arrow-left mr-2"></i>Back
+          </a>
+        </div>
+        
+        <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-6"></div>
+        
+        <!-- Configuration Form -->
+        <div class="space-y-5 mb-6">
+          
+          <!-- Sport Selection -->
+          <div class="glass-card rounded-xl p-5 border border-blue-100 hover-lift smooth-transition">
+            <label class="block text-sm font-semibold text-gray-700 mb-2">
+              <i class="fas fa-basketball-ball mr-2 text-blue-500"></i>Sport
+            </label>
+            <select 
+              id="sport" 
+              class="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-lg input-focus smooth-transition text-gray-800 font-medium appearance-none cursor-pointer"
+            >
+              <!-- Options populated by JS -->
+            </select>
+          </div>
+
+          <!-- String Type Selection (Conditional) -->
+          <div id="stringWrap" class="glass-card rounded-xl p-5 border border-purple-100 hover-lift smooth-transition">
+            <label class="block text-sm font-semibold text-gray-700 mb-2">
+              <i class="fas fa-grip-lines mr-2 text-purple-500"></i>String Type
+            </label>
+            <select 
+              id="string" 
+              class="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-lg input-focus smooth-transition text-gray-800 font-medium appearance-none cursor-pointer"
+            >
+              <!-- Options populated by JS -->
+            </select>
+            <p class="text-xs text-gray-500 mt-2 flex items-center">
+              <i class="fas fa-info-circle mr-1"></i>
+              Premium strings available with additional cost
+            </p>
+          </div>
+
+          <!-- Tension Selection (Conditional) -->
+          <div id="tensionWrap" class="glass-card rounded-xl p-5 border border-green-100 hover-lift smooth-transition">
+            <label class="block text-sm font-semibold text-gray-700 mb-2">
+              <i class="fas fa-tachometer-alt mr-2 text-green-500"></i>Tension (lbs)
+            </label>
+            <select 
+              id="tension" 
+              class="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-lg input-focus smooth-transition text-gray-800 font-medium appearance-none cursor-pointer"
+            >
+              <!-- Options populated by JS -->
+            </select>
+            <p class="text-xs text-gray-500 mt-2 flex items-center">
+              <i class="fas fa-lightbulb mr-1"></i>
+              Higher tension = more control, lower = more power
+            </p>
+          </div>
+
+          <!-- Urgency Selection -->
+          <div class="glass-card rounded-xl p-5 border border-orange-100 hover-lift smooth-transition">
+            <label class="block text-sm font-semibold text-gray-700 mb-2">
+              <i class="fas fa-bolt mr-2 text-orange-500"></i>Service Speed
+            </label>
+            <select 
+              id="urgency" 
+              class="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-lg input-focus smooth-transition text-gray-800 font-medium appearance-none cursor-pointer"
+            >
+              <!-- Options populated by JS -->
+            </select>
+            <div class="mt-3 px-3 py-2 bg-orange-50 border-l-4 border-orange-400 rounded text-xs text-orange-800" id="slaDisplay">
+              <i class="fas fa-clock mr-1"></i>SLA: -
+            </div>
+          </div>
+
+          <!-- Notes Input -->
+          <div class="glass-card rounded-xl p-5 border border-indigo-100 hover-lift smooth-transition">
+            <label class="block text-sm font-semibold text-gray-700 mb-2">
+              <i class="fas fa-comment mr-2 text-indigo-500"></i>Special Instructions (Optional)
+            </label>
+            <textarea 
+              id="notes"
+              class="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-lg input-focus smooth-transition text-gray-800 resize-none"
+              rows="3"
+              placeholder="E.g., 4 knots, pre-stretch 10%, specific preferences..."
+            ></textarea>
+            <p class="text-xs text-gray-500 mt-2 flex items-center">
+              <i class="fas fa-info-circle mr-1"></i>
+              Share any specific requirements with the partner
+            </p>
+          </div>
+        </div>
+
+        <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-6"></div>
+
+        <!-- Price Summary -->
+        <div class="glass-card rounded-xl p-6 mb-6 border border-green-100 bg-gradient-to-r from-green-50 to-emerald-50">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <div class="text-sm font-semibold text-gray-600 mb-2">
+                <i class="fas fa-calculator mr-2 text-green-500"></i>Estimated Price
+              </div>
+              <div class="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent flex items-center" id="price">
+                ₹0
+              </div>
+            </div>
+            <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center shadow-lg">
+              <i class="fas fa-rupee-sign text-white text-2xl"></i>
+            </div>
+          </div>
+          <div class="pt-4 border-t-2 border-green-200">
+            <div class="text-sm text-gray-700" id="sla">
+              <i class="fas fa-clock text-green-500 mr-2"></i>SLA: -
+            </div>
+          </div>
+        </div>
+
+        <!-- Next Button -->
+        <a 
+          href="pickup.html" 
+          id="nextBtn"
+          class="w-full inline-flex items-center justify-center px-6 py-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-lg font-bold rounded-xl shadow-lg hover:shadow-xl smooth-transition hover:from-blue-600 hover:to-indigo-700"
+        >
+          <i class="fas fa-arrow-right mr-2"></i>
+          Continue to Pickup
+        </a>
+
+        <!-- Info Notice -->
+        <div class="mt-6 bg-blue-50 border-l-4 border-blue-500 rounded-lg p-4">
+          <div class="flex items-start gap-2">
+            <i class="fas fa-info-circle text-blue-600 mt-0.5"></i>
+            <div class="text-sm text-blue-800">
+              <strong>Price Breakdown:</strong> Final price includes base service + string upgrades + urgency multiplier.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bottom Navigation -->
+      <div class="fixed bottom-0 left-0 right-0 max-w-[480px] mx-auto glass-card border-t-2 border-gray-200 py-3 px-6">
+        <div class="flex justify-around items-center">
+          <a href="home.html" class="flex flex-col items-center gap-1 text-blue-600 smooth-transition">
+            <i class="fas fa-home text-xl"></i>
+            <span class="text-xs font-semibold">Home</span>
+          </a>
+          <a href="orders.html" class="flex flex-col items-center gap-1 text-gray-400 hover:text-blue-600 smooth-transition">
+            <i class="fas fa-box text-xl"></i>
+            <span class="text-xs font-medium">Orders</span>
+          </a>
+          <a href="profile.html" class="flex flex-col items-center gap-1 text-gray-400 hover:text-blue-600 smooth-transition">
+            <i class="fas fa-user text-xl"></i>
+            <span class="text-xs font-medium">Profile</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Note -->
+    <div class="text-center mt-8 px-4 py-3 glass-card rounded-lg text-gray-500 text-sm max-w-[480px] mx-auto">
+      <i class="fas fa-info-circle mr-2"></i>
+      Synthetic data only. Prototype for UI/UX validation.
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    (async ()=>{
+      const data = await loadData();
+      const svcId = qs('svc') || 'SVC-STR';
+      const svc = data.services.find(s=>s.id===svcId) || data.services[0];
+      document.getElementById('svcSub').textContent = svc.name;
+
+      const sportSel = document.getElementById('sport');
+      data.catalog.sports.forEach(x=>sportSel.insertAdjacentHTML('beforeend', `<option>${x}</option>`));
+
+      const stringSel = document.getElementById('string');
+      data.catalog.string_types.forEach(x=>stringSel.insertAdjacentHTML('beforeend', `<option value="${x.price_add}">${x.brand} ${x.model} (+${fmtINR(x.price_add)})</option>`));
+
+      const tensionSel = document.getElementById('tension');
+      data.catalog.tension.forEach(x=>tensionSel.insertAdjacentHTML('beforeend', `<option>${x}</option>`));
+
+      const urgSel = document.getElementById('urgency');
+      data.catalog.urgency.forEach(u=>urgSel.insertAdjacentHTML('beforeend', `<option value="${u.multiplier}" data-key="${u.key}">${u.label}</option>`));
+
+      const showStringingFields = (svc.id==='SVC-STR');
+      document.getElementById('stringWrap').style.display = showStringingFields ? 'block' : 'none';
+      document.getElementById('tensionWrap').style.display = showStringingFields ? 'block' : 'none';
+
+      function calc(){
+        const add = parseInt(stringSel.value||0,10);
+        const mult = parseFloat(urgSel.value||1);
+        const price = Math.round((svc.base_price + add) * mult);
+        document.getElementById('price').textContent = fmtINR(price);
+        const key = urgSel.options[urgSel.selectedIndex].dataset.key;
+        const slaText = key==='express' ? svc.sla_exp : svc.sla_std;
+        document.getElementById('sla').innerHTML = `<i class="fas fa-clock text-green-500 mr-2"></i>Delivery: ${slaText}`;
+        document.getElementById('slaDisplay').innerHTML = `<i class="fas fa-clock mr-1"></i>Delivery: ${slaText}`;
+        
+        // bake choices into next url
+        const next = document.getElementById('nextBtn');
+        const q = new URLSearchParams();
+        q.set('svc', svc.id);
+        q.set('sport', sportSel.value);
+        q.set('string', showStringingFields ? stringSel.options[stringSel.selectedIndex].text : '-');
+        q.set('tension', showStringingFields ? tensionSel.value + ' lbs' : '-');
+        q.set('urgency', urgSel.options[urgSel.selectedIndex].text);
+        q.set('price', price);
+        q.set('notes', document.getElementById('notes').value || '');
+        next.href = 'pickup.html?' + q.toString();
+      }
+      [sportSel,stringSel,tensionSel,urgSel,document.getElementById('notes')].forEach(el=>el.addEventListener('input', calc));
+      calc();
+    })();
+  </script>
+</body>
+</html>

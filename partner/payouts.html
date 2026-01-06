@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Partner Payouts - Plaready</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .smooth-transition {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .slide-in {
+      animation: slideInUp 0.5s ease-out forwards;
+    }
+    
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hover-lift {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -5px rgba(0, 0, 0, 0.15);
+    }
+    
+    .kpi-card {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .kpi-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    }
+    
+    .money-shimmer {
+      background: linear-gradient(
+        90deg,
+        #10b981 0%,
+        #34d399 50%,
+        #10b981 100%
+      );
+      background-size: 200% auto;
+      animation: shimmer 3s linear infinite;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    @keyframes shimmer {
+      to {
+        background-position: 200% center;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50/30 min-h-screen">
+  
+  <!-- Navigation Bar -->
+  <nav class="glass-card sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row justify-between items-center py-3 gap-4">
+        <!-- Brand -->
+        <a href="../index.html" class="flex items-center space-x-3 smooth-transition hover:opacity-80">
+          <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
+            <i class="fas fa-toolbox text-white text-xl"></i>
+          </div>
+          <span class="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            Plaready Prototype
+          </span>
+        </a>
+        
+        <!-- Navigation Links -->
+        <div class="flex flex-wrap items-center gap-2">
+          <a href="dashboard.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-home mr-2"></i>Dashboard
+          </a>
+          <a href="orders.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-list-ul mr-2"></i>Orders
+          </a>
+          <a href="payouts.html" class="px-4 py-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white font-medium rounded-lg shadow-md smooth-transition hover:shadow-lg">
+            <i class="fas fa-wallet mr-2"></i>Payouts
+          </a>
+          <a href="onboarding.html" class="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 shadow-sm smooth-transition hover:bg-gray-50 hover:shadow-md">
+            <i class="fas fa-user-check mr-2"></i>Onboarding
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+    <!-- Header Section -->
+    <div class="glass-card rounded-2xl shadow-xl p-8 mb-6 slide-in">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-4">
+          <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl shadow-lg">
+            <i class="fas fa-wallet text-white text-2xl"></i>
+          </div>
+          <div>
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+              Payouts
+            </h1>
+            <p class="text-gray-600 text-lg mt-1">
+              Earnings summary, settlements, and commission breakdown.
+            </p>
+          </div>
+        </div>
+        <button class="hidden md:inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl smooth-transition hover:from-blue-600 hover:to-indigo-600">
+          <i class="fas fa-download mr-2"></i>
+          Download Statement
+        </button>
+      </div>
+      
+      <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent my-6"></div>
+      
+      <!-- KPI Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Balance KPI -->
+        <div class="glass-card kpi-card rounded-xl p-6 hover-lift smooth-transition border border-green-100">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <div class="text-sm font-medium text-gray-500 uppercase tracking-wide mb-2">Balance</div>
+              <div class="text-4xl font-bold money-shimmer mb-1">₹8,420</div>
+            </div>
+            <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg flex items-center justify-center shadow-md">
+              <i class="fas fa-rupee-sign text-white text-xl"></i>
+            </div>
+          </div>
+          <div class="text-xs text-gray-500 flex items-center">
+            <i class="fas fa-hourglass-half mr-2"></i>Pending settlement
+          </div>
+          <div class="mt-4 pt-4 border-t border-gray-200">
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-gray-600">From 7 completed jobs</span>
+              <span class="text-green-600 font-semibold">+₹8,420</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Commission KPI -->
+        <div class="glass-card kpi-card rounded-xl p-6 hover-lift smooth-transition border border-purple-100">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <div class="text-sm font-medium text-gray-500 uppercase tracking-wide mb-2">Commission</div>
+              <div class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-1">18%</div>
+            </div>
+            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center shadow-md">
+              <i class="fas fa-percentage text-white text-xl"></i>
+            </div>
+          </div>
+          <div class="text-xs text-gray-500 flex items-center">
+            <i class="fas fa-layer-group mr-2"></i>Current slab
+          </div>
+          <div class="mt-4 pt-4 border-t border-gray-200">
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-gray-600">Next tier at 50 jobs</span>
+              <span class="text-purple-600 font-semibold">16% (Save 2%)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Next Payout KPI -->
+        <div class="glass-card kpi-card rounded-xl p-6 hover-lift smooth-transition border border-blue-100">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <div class="text-sm font-medium text-gray-500 uppercase tracking-wide mb-2">Next payout</div>
+              <div class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-1">2025-12-18</div>
+            </div>
+            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center shadow-md">
+              <i class="fas fa-calendar-check text-white text-xl"></i>
+            </div>
+          </div>
+          <div class="text-xs text-gray-500 flex items-center">
+            <i class="fas fa-sync-alt mr-2"></i>Weekly schedule
+          </div>
+          <div class="mt-4 pt-4 border-t border-gray-200">
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-gray-600">In 2 days</span>
+              <span class="text-blue-600 font-semibold flex items-center">
+                <i class="fas fa-clock mr-1"></i>Wednesday
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settlement History Section -->
+    <div class="glass-card rounded-2xl shadow-xl p-8 slide-in hover-lift">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-bold text-gray-800 flex items-center">
+          <i class="fas fa-history text-indigo-500 mr-3"></i>
+          Settlement History
+        </h2>
+        <div class="flex items-center gap-2">
+          <select class="px-4 py-2 bg-white border-2 border-gray-200 rounded-lg text-sm font-medium smooth-transition focus:outline-none focus:border-purple-500 cursor-pointer">
+            <option>Last 30 days</option>
+            <option>Last 3 months</option>
+            <option>Last 6 months</option>
+            <option>All time</option>
+          </select>
+        </div>
+      </div>
+      
+      <!-- Settlement Items -->
+      <div class="space-y-4">
+        
+        <!-- Settlement 1 - Paid -->
+        <div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl p-6 smooth-transition hover:border-green-300 hover:shadow-lg">
+          <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+            <!-- Settlement Info -->
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="px-4 py-1.5 bg-green-600 text-white text-sm font-bold rounded-lg">
+                  SET-8812
+                </span>
+                <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
+                  <i class="fas fa-check-circle mr-1"></i>Paid
+                </span>
+              </div>
+              <div class="flex flex-wrap items-center gap-4 text-sm text-gray-700">
+                <div class="flex items-center">
+                  <i class="fas fa-calendar text-green-600 mr-2"></i>
+                  <span><strong>Date:</strong> 2025-12-11</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-briefcase text-green-600 mr-2"></i>
+                  <span><strong>Jobs:</strong> 12 completed</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Amount -->
+            <div class="flex flex-col items-end">
+              <div class="text-sm text-gray-500 mb-1">Net Earnings</div>
+              <div class="text-3xl font-bold text-green-600 flex items-center">
+                <i class="fas fa-rupee-sign text-2xl mr-1"></i>11,340
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Settlement 2 - Paid -->
+        <div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl p-6 smooth-transition hover:border-green-300 hover:shadow-lg">
+          <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+            <!-- Settlement Info -->
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="px-4 py-1.5 bg-green-600 text-white text-sm font-bold rounded-lg">
+                  SET-8721
+                </span>
+                <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
+                  <i class="fas fa-check-circle mr-1"></i>Paid
+                </span>
+              </div>
+              <div class="flex flex-wrap items-center gap-4 text-sm text-gray-700">
+                <div class="flex items-center">
+                  <i class="fas fa-calendar text-green-600 mr-2"></i>
+                  <span><strong>Date:</strong> 2025-12-04</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-briefcase text-green-600 mr-2"></i>
+                  <span><strong>Jobs:</strong> 9 completed</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Amount -->
+            <div class="flex flex-col items-end">
+              <div class="text-sm text-gray-500 mb-1">Net Earnings</div>
+              <div class="text-3xl font-bold text-green-600 flex items-center">
+                <i class="fas fa-rupee-sign text-2xl mr-1"></i>8,220
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Settlement 3 - Scheduled -->
+        <div class="bg-gradient-to-r from-yellow-50 to-amber-50 border-2 border-yellow-200 rounded-xl p-6 smooth-transition hover:border-yellow-300 hover:shadow-lg">
+          <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+            <!-- Settlement Info -->
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="px-4 py-1.5 bg-yellow-600 text-white text-sm font-bold rounded-lg">
+                  SET-8899
+                </span>
+                <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full">
+                  <i class="fas fa-clock mr-1"></i>Scheduled
+                </span>
+              </div>
+              <div class="flex flex-wrap items-center gap-4 text-sm text-gray-700">
+                <div class="flex items-center">
+                  <i class="fas fa-calendar text-yellow-600 mr-2"></i>
+                  <span><strong>Date:</strong> 2025-12-18</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-briefcase text-yellow-600 mr-2"></i>
+                  <span><strong>Jobs:</strong> 7 completed</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Amount -->
+            <div class="flex flex-col items-end">
+              <div class="text-sm text-gray-500 mb-1">Estimated</div>
+              <div class="text-3xl font-bold text-yellow-600 flex items-center">
+                <i class="fas fa-rupee-sign text-2xl mr-1"></i>6,780
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary Stats -->
+      <div class="mt-6 pt-6 border-t border-gray-200">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="text-center p-4 bg-blue-50 rounded-lg">
+            <div class="text-sm text-gray-600 mb-1">Total Paid</div>
+            <div class="text-2xl font-bold text-blue-600">₹19,560</div>
+          </div>
+          <div class="text-center p-4 bg-purple-50 rounded-lg">
+            <div class="text-sm text-gray-600 mb-1">Total Jobs</div>
+            <div class="text-2xl font-bold text-purple-600">28</div>
+          </div>
+          <div class="text-center p-4 bg-green-50 rounded-lg">
+            <div class="text-sm text-gray-600 mb-1">Avg per Job</div>
+            <div class="text-2xl font-bold text-green-600">₹698</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Note -->
+    <div class="text-center mt-8 px-4 py-3 glass-card rounded-lg text-gray-500 text-sm">
+      <i class="fas fa-info-circle mr-2"></i>
+      Synthetic data only. Prototype for UI/UX validation.
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
