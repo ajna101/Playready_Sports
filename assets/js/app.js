@@ -328,3 +328,28 @@ window.PlareadyAPI = {
 };
 
 console.log('✅ Plaready API Client loaded successfully!');
+
+
+// ===============================
+// DATA LOADER (VERY IMPORTANT)
+// ===============================
+
+async function loadData() {
+  const res = await fetch('../assets/js/data.json');
+  if (!res.ok) {
+    throw new Error('Failed to load data.json');
+  }
+  return await res.json();
+}
+
+// ===============================
+// HELPERS
+// ===============================
+
+function qs(key) {
+  return new URLSearchParams(window.location.search).get(key);
+}
+
+function fmtINR(n) {
+  return '₹' + Number(n).toLocaleString('en-IN');
+}
